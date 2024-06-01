@@ -1,0 +1,48 @@
+version: "3"
+
+volumes:
+  db-store:
+
+services:
+  web:
+    platform: linux/arm64
+    build:
+      context: .
+      dockerfile: ./infra/docker/httpd-php/Dockerfile
+    ports:
+      - 8888:80
+    volumes:
+      - ./src:/var/www/html/src/
+      - ./infra/docker/httpd-php/php.ini:/usr/local/etc/php/php.ini
+    tty: true
+    links:
+      - mysql
+
+  mysql:
+    image: mysql
+    volumes:
+      - db-store:/var/lib/mysql
+    ports:
+      - 3386:3306
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: sercret
+      MYSQL_DATABASE: mysql_sample
+      MYSQL_USER: phper
+      MYSQL_PASSWORD: sercret
+
+  redis:
+    image: redis:alpine
+
+  redis-commander:
+    hostname: redis-commander
+    image: rediscommander/redis-commander:latest
+    restart: always
+    links:
+      - redis
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+    ports:
+      - 8881:8081
