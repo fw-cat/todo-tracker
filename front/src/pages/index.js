@@ -7,7 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const IndexPage = () => {
   return (
     <BaseLayout>
-      <h1>テスト</h1>
+      <h1>Task Page</h1>
     </BaseLayout>
   )
 }
