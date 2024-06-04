@@ -4,9 +4,9 @@ namespace App\Enums;
 
 enum UserStatus: int
 {
-    case PRE_REGISTER   = 0;
-    case REGISTERD      = 1;
-    case USE_STOP       = 2;
+    case PRE_REGISTER   = 1;
+    case REGISTERD      = 2;
+    case USE_STOP       = 3;
     case USER_DELETED   = 8;
     case SYSTEM_DELETED = 9;
 
