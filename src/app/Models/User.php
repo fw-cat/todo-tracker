@@ -5,6 +5,7 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
 use App\Enums\UserStatus;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -12,7 +13,9 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable, SoftDeletes;
+    use SoftDeletes;
+    use HasFactory;
+    use Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -31,7 +34,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $hidden = [
-        'status', 'password',
+        'status', 'password', "created_at", "updated_at", "deleted_at"
     ];
 
     /**
@@ -45,5 +48,25 @@ class User extends Authenticatable
             'status' => UserStatus::class,
             'password' => 'hashed',
         ];
+    }
+
+    /*****************************************
+     * スコープ
+     */
+    /**
+     * アクティブかどうか。（今後公開フラグ以外の条件も含めて外部に公開できるものかどうか）
+     * @param Builder<User> $query
+     */
+    public function scopeIsActive(Builder $query): void
+    {
+        $query->where("status", UserStatus::REGISTERD);
+    }
+
+    /**
+     * 有効ユーザのみ取得
+     */
+    public function isAcitive(): bool
+    {
+        return $this->status->isActive();
     }
 }

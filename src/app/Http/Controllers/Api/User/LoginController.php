@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\User;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\User\Login\LoginRequest;
+use App\Services\User\LoginService;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Auth\AuthManager;
 use Illuminate\Http\JsonResponse;
@@ -21,16 +22,14 @@ class LoginController extends Controller
     ) {
     }
 
-    public function login(LoginRequest $request): JsonResponse
+    public function login(LoginRequest $request, LoginService $service): JsonResponse
     {
-        $credentials = $request->only(['email', 'password']);
-        if ($this->auth->guard('user-api')->attempt($credentials)) {
-            $request->session()->regenerate();
-    
-            return new JsonResponse([
-                'message' => 'Authenticated.',
-            ], Response::HTTP_OK);
+        $credentials = $service->login($request);
+        if (!$credentials) {
+            throw new AuthenticationException();
         }
-        throw new AuthenticationException();
+        return new JsonResponse([
+            'user' => $credentials,
+        ], Response::HTTP_OK);
     }
 }

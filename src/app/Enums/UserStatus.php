@@ -11,6 +11,15 @@ enum UserStatus: int
     case SYSTEM_DELETED = 9;
 
     /**
+     * 利用可能かどうか
+     * @return bool
+     */
+    public function isActive(): bool
+    {
+        return $this === self::PRE_REGISTER || $this === self::REGISTERD;
+    }
+
+    /**
      * ステータスのラベルを返す
      * @return string
      */
