@@ -4,5 +4,3 @@ public
 package-lock.json
 
 .env
-
-!public/static/**
