@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo+Play:slnt,wght@-11..11,200..1000&family=LXGW+WenKai+TC:wght@300;400;700&family=Noto+Sans+JP:wght@100..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto+Slab:wght@100..900&family=Sevillana&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0');
+
+.m-plus-rounded-1c-thin {
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  font-weight: 100;
+  font-style: normal;
+}
+
+.m-plus-rounded-1c-light {
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.m-plus-rounded-1c-regular {
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.m-plus-rounded-1c-medium {
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.m-plus-rounded-1c-bold {
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.m-plus-rounded-1c-extrabold {
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  font-weight: 800;
+  font-style: normal;
+}
+
+.m-plus-rounded-1c-black {
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  font-weight: 900;
+  font-style: normal;
+}
+
+.fredericka-the-great-regular {
+  font-family: "Fredericka the Great", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+/**
+ * <weight>: Use a value from 200 to 1000
+ * <slant>: Use a value from -11 to 11
+ */
+.cairo-play-fw-100-sl--11 {
+  font-family: "Cairo Play", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 100;
+  font-style: normal;
+  font-variation-settings: "slnt" -11;
+}
+
+.sevillana-regular {
+  font-family: "Sevillana", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+/**
+ * <weight>: Use a value from 200 to 1000
+ */
+.nunito-sans-fw-200 {
+  font-family: "Nunito Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100,
+    "YTLC" 500;
+}
+
+.lxgw-wenkai-tc-light {
+  font-family: "LXGW WenKai TC", cursive;
+  font-weight: 300;
+  font-style: normal;
+}
+.lxgw-wenkai-tc-regular {
+  font-family: "LXGW WenKai TC", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+.lxgw-wenkai-tc-bold {
+  font-family: "LXGW WenKai TC", cursive;
+  font-weight: 700;
+  font-style: normal;
+}
+
+/**
+ * <weight>: Use a value from 100 to 900
+ */
+.raleway-fw-100 {
+  font-family: "Raleway", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 100;
+  font-style: normal;
+}
+
+/**
+ * <weight>: Use a value from 100 to 900
+ */
+.noto-sans-jp-fw-100 {
+  font-family: "Noto Sans JP", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 100;
+  font-style: normal;
+}
+
+/**
+ * <weight>: Use a value from 100 to 900
+ */
+.roboto-slab-fw-100 {
+  font-family: "Roboto Slab", serif;
+  font-optical-sizing: auto;
+  font-weight: 100;
+  font-style: normal;
+}
+.roboto-slab-fw-900 {
+  font-family: "Roboto Slab", serif;
+  font-optical-sizing: auto;
+  font-weight: 900;
+  font-style: normal;
+}
