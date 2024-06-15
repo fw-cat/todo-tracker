@@ -3,4 +3,5 @@ node_modules/
 public
 package-lock.json
 
-.env
+.env*
+!.env.example
