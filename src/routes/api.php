@@ -9,4 +9,4 @@ use Illuminate\Support\Facades\Route;
 Route::post("/login/", [LoginController::class, "login"])->name("login");
 Route::post("/logout/", [LogoutController::class, "logout"])->name("logout");
 
-Route::apiResource("/tracker/", TrackerController::class)->middleware('auth:sanctum');
+Route::apiResource("/tracker/", TrackerController::class);
