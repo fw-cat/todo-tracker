@@ -1,15 +1,15 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 
-const BaseLayout = ({ children }) => (
+const LoginLayout = ({ children }) => (
   <>
     <Helmet>
       <title>Todo App</title>
     </Helmet>
-    <main>
+    <div id="login">
       {children}
-    </main>
+    </div>
   </>
 );
 
-export default BaseLayout;
+export default LoginLayout;

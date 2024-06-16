@@ -5,28 +5,30 @@ const isBrowser = typeof window !== "undefined";
 
 export const isLoggedIn = () => {
   if (!isBrowser) return false;
-  const token = localStorage.getItem('token');
+  const token = localStorage.getItem('user');
   return !!token;
 };
 
-export const handleLogin = async (username, password) => {
+export const user = () => {
+  const user = localStorage.getItem('user');
+  return user;
+}
+
+export const handleLogin = async (email, password) => {
   try {
-    const response = await axios.post('http://localhost:8000/oauth/token', {
-      grant_type: 'password',
-      client_id: 'YOUR_CLIENT_ID',
-      client_secret: 'YOUR_CLIENT_SECRET',
-      username: username,
+    const response = await axios.post(`${process.env.REACT_APP_API_BASE_URL}/login`, {
+      email: email,
       password: password,
-      scope: '',
     });
-    localStorage.setItem('token', response.data.access_token);
+    localStorage.setItem('user', JSON.stringify(response.data));
     navigate('/tasks');
+
   } catch (error) {
     console.error('Login failed:', error);
   }
 };
 
 export const handleLogout = () => {
-  localStorage.removeItem('token');
+  localStorage.removeItem('user');
   navigate('/login');
 };

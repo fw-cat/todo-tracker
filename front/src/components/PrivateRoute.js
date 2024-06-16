@@ -9,7 +9,7 @@ const PrivateRoute = ({ component: Component, location, ...rest }) => {
     return null;
   }
 
-  return <Component {...rest} />;
+  return <BaseLayout {...rest} />;
 };
 
 export default PrivateRoute;

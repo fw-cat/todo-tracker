@@ -1,9 +1,6 @@
 import * as React from "react"
 import BaseLayout from "../components/Layout/Base"
 
-// Importing the Bootstrap CSS
-import 'bootstrap/dist/css/bootstrap.min.css';
-
 const IndexPage = () => {
   return (
     <BaseLayout>
