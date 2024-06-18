@@ -23,7 +23,7 @@ const LoginPage = () => {
           <form onSubmit={login}>
             <div className="form-group">
               <div className="input-icon">
-                <label for="email">
+                <label htmlFor="email">
                   <span className="material-symbols-outlined">person</span>
                 </label>
               </div>
@@ -40,7 +40,7 @@ const LoginPage = () => {
 
             <div className="form-group">
               <div className="input-icon">
-                <label for="password">
+                <label htmlFor="password">
                   <span className="material-symbols-outlined rotate-z90">key</span>
                 </label>
               </div>

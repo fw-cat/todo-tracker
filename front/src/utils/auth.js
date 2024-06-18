@@ -11,7 +11,7 @@ export const isLoggedIn = () => {
 };
 
 export const user = () => {
-  const user = localStorage.getItem('user');
+  const user = JSON.parse(localStorage.getItem('user'));
   return user;
 }
 
@@ -21,7 +21,7 @@ export const handleLogin = async (email, password) => {
       email: email,
       password: password,
     });
-    localStorage.setItem('user', JSON.stringify(response.data));
+    localStorage.setItem('user', JSON.stringify(response.data.user));
     navigate('/');
 
   } catch (error) {
