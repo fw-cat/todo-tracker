@@ -23,11 +23,14 @@ const LoginPage = () => {
           <form onSubmit={login}>
             <div className="form-group">
               <div className="input-icon">
-                <span className="material-symbols-outlined">person</span>
+                <label for="email">
+                  <span className="material-symbols-outlined">person</span>
+                </label>
               </div>
               <div className="form-control">
                 <input
                   type="email"
+                  id="email"
                   name="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
@@ -37,11 +40,14 @@ const LoginPage = () => {
 
             <div className="form-group">
               <div className="input-icon">
-                <span className="material-symbols-outlined rotate-z90">key</span>
+                <label for="password">
+                  <span className="material-symbols-outlined rotate-z90">key</span>
+                </label>
               </div>
               <div className="form-control">
                 <input
                   type="password"
+                  id="password"
                   name="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
