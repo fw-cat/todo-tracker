@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\User;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\User\Login\LoginRequest;
+use App\Http\Resources\UserResource;
 use App\Services\User\LoginService;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Auth\AuthManager;
@@ -29,7 +30,7 @@ class LoginController extends Controller
             throw new AuthenticationException();
         }
         return new JsonResponse([
-            'user' => $credentials,
+            'user' => new UserResource($credentials),
         ], Response::HTTP_OK);
     }
 }
