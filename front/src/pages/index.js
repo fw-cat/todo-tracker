@@ -1,14 +1,12 @@
 import * as React from "react"
-import BaseLayout from "../components/Layout/Base"
+import {user} from "../utils/auth"
 
 const IndexPage = () => {
   return (
-    <BaseLayout>
-      <h1>Task Page</h1>
-    </BaseLayout>
+    <main>
+      <h1>access { user.id }</h1>
+    </main>
   )
 }
 
 export default IndexPage
-
-export const Head = () => <title>Todo Tracker</title>

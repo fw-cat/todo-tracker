@@ -4,11 +4,11 @@ import { Helmet } from 'react-helmet';
 const BaseLayout = ({ children }) => (
   <>
     <Helmet>
-      <title>Todo App</title>
+      <title>HABIT TRACKER</title>
     </Helmet>
-    <main>
+    <div>
       {children}
-    </main>
+    </div>
   </>
 );
 

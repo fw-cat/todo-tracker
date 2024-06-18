@@ -5,6 +5,7 @@ const isBrowser = typeof window !== "undefined";
 
 export const isLoggedIn = () => {
   if (!isBrowser) return false;
+  console.log('isLoggedIn');
   const token = localStorage.getItem('user');
   return !!token;
 };
@@ -21,7 +22,7 @@ export const handleLogin = async (email, password) => {
       password: password,
     });
     localStorage.setItem('user', JSON.stringify(response.data));
-    navigate('/tasks');
+    navigate('/');
 
   } catch (error) {
     console.error('Login failed:', error);

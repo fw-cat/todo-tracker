@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet';
 const LoginLayout = ({ children }) => (
   <>
     <Helmet>
-      <title>Todo App</title>
+      <title>HABIT TRACKER</title>
     </Helmet>
     <div id="login">
       {children}
