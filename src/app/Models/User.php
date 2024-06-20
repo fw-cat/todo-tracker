@@ -23,7 +23,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'user_name',
         'email',
         'password',
     ];
@@ -48,6 +48,18 @@ class User extends Authenticatable
             'status' => UserStatus::class,
             'password' => 'hashed',
         ];
+    }
+
+    /****************
+     * リレーション定義
+     */
+    /**
+     * トラッカー
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany<Tracker>
+     */
+    public function trackers()
+    {
+        return $this->hasMany(Tracker::class, "user_id", "id");
     }
 
     /*****************************************
