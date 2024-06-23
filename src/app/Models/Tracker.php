@@ -69,4 +69,12 @@ class Tracker extends Model
     {
         return $this->belongsTo(User::class, "user_id", "id");
     }
+    /**
+     * チェック
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany<User>
+     */
+    public function checks()
+    {
+        return $this->hasMany(TrackerCheck::class, "tracker_id", "id");
+    }
 }

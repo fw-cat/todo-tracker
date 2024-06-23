@@ -24,7 +24,7 @@ class TrackerResource extends JsonResource
             'interval' => [
                 'name' => $this->interval->getName(),
             ],
-            
+            'count' => $this->checks->count(),
         ];
     }
 }
