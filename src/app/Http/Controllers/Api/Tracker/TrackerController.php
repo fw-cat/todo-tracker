@@ -7,7 +7,6 @@ use App\Http\Requests\Api\Tracker\IndexRequest;
 use App\Http\Requests\Api\Tracker\StoreRequest;
 use App\Http\Resources\Tracker\TrackerCollection;
 use App\Services\Tracker\TrackerService;
-use App\Services\User\UserService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -17,12 +16,10 @@ class TrackerController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(IndexRequest $request, UserService $service): JsonResponse
+    public function index(IndexRequest $request): JsonResponse
     {
-        $user_id = $request->integer("user");
-        $user = $service->getUser($user_id);
         return new JsonResponse([
-            'trackers' => new TrackerCollection($user->trackers),
+            'trackers' => new TrackerCollection($request->user()->trackers),
         ], Response::HTTP_OK);
     }
 

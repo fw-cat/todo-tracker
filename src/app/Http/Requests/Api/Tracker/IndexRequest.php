@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Api\Tracker;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class IndexRequest extends FormRequest
 {
@@ -11,7 +12,7 @@ class IndexRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return true;
+        return Auth::check();
     }
 
     /**
@@ -22,14 +23,12 @@ class IndexRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'user' => ['required', 'integer', 'exists:\App\Models\User,id'],
         ];
     }
 
     public function attributes(): array
     {
         return [
-            'user'  => "ログインユーザ",
         ];
     }
 

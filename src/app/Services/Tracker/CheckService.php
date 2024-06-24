@@ -5,16 +5,12 @@ namespace App\Services\Tracker;
 use App\Exceptions\DuplicateTrackerCheckException;
 use App\Exceptions\TrackerNotFoundException;
 use App\Http\Requests\Api\TrackerCheck\StoreRequest;
-use App\Models\User;
 
 class CheckService
 {
     public function trackerCheck(int $tracker_id, StoreRequest $request): bool
     {
-        $user_id = $request->integer("user");
-        $collection = User::where([
-            'id' => $user_id,
-        ])->first()->trackers()->where([
+        $collection = $request->user()->trackers()->where([
             'id' => $tracker_id,
         ]);
         $isExists = $collection->exists();

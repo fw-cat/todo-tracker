@@ -25,12 +25,22 @@ class LoginController extends Controller
 
     public function login(LoginRequest $request, LoginService $service): JsonResponse
     {
-        $credentials = $service->login($request);
-        if (!$credentials) {
-            throw new AuthenticationException();
+        $credentials = $request->only(['email', 'password']);
+        if ($this->auth->guard('user-api')->attempt($credentials)) {
+            $request->session()->regenerate();
+
+            return new JsonResponse([
+                'message' => 'Authenticated.',
+            ]);
         }
-        return new JsonResponse([
-            'user' => new UserResource($credentials),
-        ], Response::HTTP_OK);
+        throw new AuthenticationException();
+
+        // $credentials = $service->login($request);
+        // if (!$credentials) {
+        //     throw new AuthenticationException();
+        // }
+        // return new JsonResponse([
+        //     'user' => new UserResource($credentials),
+        // ], Response::HTTP_OK);
     }
 }

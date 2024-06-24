@@ -5,6 +5,7 @@ namespace App\Http\Requests\Api\Tracker;
 use App\Enums\TrackerColor;
 use App\Enums\TrackerInterval;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rules\Enum;
 
 class StoreRequest extends FormRequest
@@ -14,7 +15,7 @@ class StoreRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return true;
+        return Auth::check();
     }
 
     /**
@@ -25,7 +26,6 @@ class StoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'user' => ['required', 'integer', 'exists:\App\Models\User,id'],
             'name' => ['required', 'string'],
             'color' => ['required', new Enum(TrackerColor::class)],
             'interval' => ['nullable', new Enum(TrackerInterval::class)],
@@ -35,7 +35,6 @@ class StoreRequest extends FormRequest
     public function attributes(): array
     {
         return [
-            'user'  => "ログインユーザ",
             'name'  => "トラッカー名",
             'color'  => "色",
             'interval'  => "間隔",
