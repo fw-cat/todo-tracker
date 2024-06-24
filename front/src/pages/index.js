@@ -1,12 +1,19 @@
 import * as React from "react"
-import {user} from "../utils/auth"
+import api from "../utils/api"
+
+// trackerの取得
+const getTracker = async () => {
+  let result = await api.get("/tracker");
+  console.log(result)
+  return result.data.tracker
+}
 
 const IndexPage = () => {
-  console.log("user is ", user())
+  let trackers = getTracker()
 
   return (
     <main>
-      <h1>access { user().id }</h1>
+      <h1>access</h1>
     </main>
   )
 }
