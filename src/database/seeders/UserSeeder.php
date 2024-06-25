@@ -25,5 +25,13 @@ class UserSeeder extends Seeder
             'password' => Hash::make("password"),
             'status' => UserStatus::REGISTERD,
         ]);
+
+        // デモユーザ
+        User::create([
+            'user_name' => "池田りり",
+            'email' => "mashino1205@gmail.com",
+            'password' => Hash::make("password"),
+            'status' => UserStatus::REGISTERD,
+        ]);
     }
 }
