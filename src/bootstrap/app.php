@@ -28,7 +28,6 @@ return Application::configure(basePath: dirname(__DIR__))
             EncryptCookies::class,
             StartSession::class,
             EnsureFrontendRequestsAreStateful::class,
-            'throttle:api',
             SubstituteBindings::class,
         ]);
     })
