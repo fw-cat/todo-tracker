@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\Tracker;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\Tracker\IndexRequest;
 use App\Http\Requests\Api\Tracker\StoreRequest;
+use App\Http\Requests\Api\Tracker\UpdateRequest;
 use App\Http\Resources\Tracker\TrackerCollection;
 use App\Services\Tracker\TrackerService;
 use Illuminate\Http\JsonResponse;
@@ -51,9 +52,17 @@ class TrackerController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id): JsonResponse
+    public function update(UpdateRequest $request, TrackerService $service): JsonResponse
     {
-        return new JsonResponse([], Response::HTTP_OK);
+        $result = $service->update($request);
+        if (!$result) {
+            return new JsonResponse([
+                'message' => "問題が発生しました",
+            ], Response::HTTP_INTERNAL_SERVER_ERROR);
+        }
+        return new JsonResponse([
+            'message' => "更新が完了しました",
+        ], Response::HTTP_OK);
     }
 
     /**

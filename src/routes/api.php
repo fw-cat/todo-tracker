@@ -17,6 +17,10 @@ Route::group(['middleware' => ['auth:user-api,sanctum']], function () {
   Route::get("/me", [MeController::class, "index"])->name("me");
   Route::post("/logout/", [LogoutController::class, "logout"])->name("logout");
 
-  Route::apiResource("/tracker/", TrackerController::class);
-  Route::apiResource("/tracker/{id}/check/", TrackerCheckController::class)->only(["store"]);
+  Route::get("/tracker/", [TrackerController::class, "index"])->name("trackers");
+  Route::post("/tracker/", [TrackerController::class, "store"])->name("trackers.store");
+  Route::put("/tracker/", [TrackerController::class, "update"])->name("trackers.update");
+  Route::delete("/tracker/", [TrackerController::class, "delete"])->name("trackers.delete");
+
+  Route::post("/tracker/{id}/check/", [TrackerCheckController::class, "store"])->name("tracker.check.store");
 });

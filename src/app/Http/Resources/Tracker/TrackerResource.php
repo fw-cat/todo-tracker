@@ -18,10 +18,12 @@ class TrackerResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'color' => [
+                'id' => $this->color,
                 'image' => $this->color->getImage(),
                 'name' => $this->color->getName(),
             ],
             'interval' => [
+                'id' => $this->interval,
                 'name' => $this->interval->getName(),
             ],
             'count' => $this->checks->count(),
