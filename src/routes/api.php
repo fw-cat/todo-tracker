@@ -13,7 +13,7 @@ Route::get("/tmp/options", OptionsController::class)->name("options");
 
 Route::post("/login/", [LoginController::class, "login"])->name("login");
 
-Route::group(['middleware' => ['auth:user-api,sanctum']], function () {
+Route::group(['middleware' => ['auth:sanctum,user-api']], function () {
   Route::get("/me", [MeController::class, "index"])->name("me");
   Route::post("/logout/", [LogoutController::class, "logout"])->name("logout");
 
