@@ -5,7 +5,7 @@ import api from "../utils/api"
 const getTracker = async () => {
   let result = await api.get("/tracker");
   console.log(result)
-  return result.data.tracker
+  return result ? result.data.tracker : []
 }
 
 const IndexPage = () => {

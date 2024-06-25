@@ -50,18 +50,17 @@ api.interceptors.response.use(
       switch (error.response.status) {
         case 401:
           // 未認証エラーの処理
-          console.error('Unauthorized', error);
-          navigate("/user/login");
+          console.log('Unauthorized', error);
           // ここでログインページへのリダイレクトなどを行う
-          break;
+          navigate("/user/login");
+        break;
         case 419:
           // CSRFトークンの期限切れ
-          console.error('CSRF token mismatch', error);
+          console.log('CSRF token mismatch', error);
           navigate("/user/login");
-          // ここでCSRFトークンの再取得などを行う
-          break;
+        break;
         default:
-          console.error('API error', error);
+          console.log('API error', error);
       }
     } else if (error.request) {
       // リクエストは作られたがレスポンスを受け取れなかった
@@ -70,7 +69,7 @@ api.interceptors.response.use(
       // リクエストの作成中にエラーが発生
       console.error('Error setting up request', error.message);
     }
-    return Promise.reject(error);
+    return false;
   }
 );
 
