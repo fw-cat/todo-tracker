@@ -9,9 +9,7 @@ use App\Services\User\LoginService;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Auth\AuthManager;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -25,24 +23,12 @@ class LoginController extends Controller
 
     public function login(LoginRequest $request, LoginService $service): JsonResponse
     {
-        // $credentials = $request->only(['email', 'password']);
-        // if ($this->auth->guard('user-api')->attempt($credentials)) {
-        //     dd($this->auth->guard('user-api')->attempt($credentials));
-        //     $token = $request->user()->createToken($request->token_name);
-        //     // $request->session()->regenerate();
-
-        //     return new JsonResponse([
-        //         'token' => $token,
-        //         'message' => 'Authenticated.',
-        //     ]);
-        // }
-        // throw new AuthenticationException();
-
         $credentials = $service->login($request);
         if (!$credentials) {
             throw new AuthenticationException();
         }
         return new JsonResponse([
+            "message" => "Authenticated.",
             'user' => new UserResource($credentials),
         ], Response::HTTP_OK);
     }
