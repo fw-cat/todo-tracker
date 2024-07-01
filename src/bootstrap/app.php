@@ -25,10 +25,10 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->api(prepend: [
-            EncryptCookies::class,
-            StartSession::class,
-            EnsureFrontendRequestsAreStateful::class,
-            SubstituteBindings::class,
+            // EncryptCookies::class,
+            // StartSession::class,
+            // EnsureFrontendRequestsAreStateful::class,
+            // SubstituteBindings::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
