@@ -3,48 +3,36 @@ import { navigate } from 'gatsby';
 
 const BASE_URL = process.env.REACT_APP_API_BASE_URL
 
-const api = axios.create({
+const getToken = () => {
+  let token = localStorage.getItem("auth_token")
+  return "Bearer " + (token ?? "");
+};
+
+axios.defaults.withCredentials = true;
+const axiosInstance = axios.create({
   baseURL: BASE_URL,
   withCredentials: true,
   headers: {
-    'Content-Type': 'application/json',
     'Accept': 'application/json',
-    'X-Requested-With': 'XMLHttpRequest',
   },
 });
 
-// CSRFトークンを取得する関数
-const getCsrfToken = async () => {
-  try {
-    await axios.get(`${BASE_URL}/sanctum/csrf-cookie`, { 
-      withCredentials: true,
-      headers: {
-        'X-Requested-With': 'XMLHttpRequest',
-      },
-    });
-  } catch (error) {
-    console.error('Failed to get CSRF token', error);
-    throw error; // エラーを上位に伝播
-  }
-};
+// CSRFトークンを自動的にヘッダーに追加するミドルウェア
+axiosInstance.interceptors.request.use((config) => {
 
-// リクエストインターセプター
-api.interceptors.request.use(async (config) => {
-  if (config.method === 'post' || config.method === 'put' || config.method === 'delete') {
-    try {
-      await getCsrfToken();
-    } catch (error) {
-      return Promise.reject(error);
-    }
-  }
+  // トークン情報を取得
+  config.headers['Authorization'] = getToken()
+
   return config;
 }, (error) => {
   return Promise.reject(error);
 });
 
 // レスポンスインターセプター
-api.interceptors.response.use(
-  (response) => response,
+axiosInstance.interceptors.response.use(
+  (response) => {
+    return response
+  },
   (error) => {
     if (error.response) {
       switch (error.response.status) {
@@ -74,4 +62,4 @@ api.interceptors.response.use(
 );
 
 // その他のAPI呼び出しメソッドをここに追加
-export default api;
+export default axiosInstance;

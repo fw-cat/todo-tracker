@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import LoginLayout from "../../components/Layout/Login"
 import formBtn from '../../images/login/login-btn.png'
-import {handleLogin} from "../../utils/auth"
+import { handleLogin } from "../../utils/auth"
 
 import "../../css/login.css";
 
@@ -10,7 +10,6 @@ const LoginPage = () => {
   const [password, setPassword] = useState('')
 
   const login = async (event) => {
-    console.log(email, password)
     event.preventDefault()
     await handleLogin(email, password)
   }
