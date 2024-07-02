@@ -26,18 +26,14 @@ class StoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required', 'string'],
-            'color' => ['required', new Enum(TrackerColor::class)],
-            'interval' => ['nullable', new Enum(TrackerInterval::class)],
+            'trackers' => ["required", "array"],
         ];
     }
 
     public function attributes(): array
     {
         return [
-            'name'  => "トラッカー名",
-            'color'  => "色",
-            'interval'  => "間隔",
+            'trackers'  => "トラッカー一覧",
         ];
     }
 }

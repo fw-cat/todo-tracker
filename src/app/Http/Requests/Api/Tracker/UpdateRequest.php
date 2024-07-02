@@ -30,7 +30,7 @@ class UpdateRequest extends FormRequest
     public function attributes(): array
     {
         return [
-            'natrackers'  => "トラッカー一覧",
+            'trackers'  => "トラッカー一覧",
         ];
     }
 }

@@ -19,16 +19,19 @@ class TrackerService
      */
     public function store(StoreRequest $request) : bool|array
     {
-        DB::transaction(function () use ($request) {
-            $name       = $request->string("name");
-            $color      = $request->integer("color");
-            $interval   = $request->input("interval") ?? TrackerInterval::DAILY;
+        $trackers = $request->input("trackers");
+        DB::transaction(function () use ($request, $trackers) {
+            foreach($trackers as $tracker) {
+                $name = $tracker['name'];
+                $color = TrackerColor::from($tracker['color']);
+                $interval = empty($tracker['interval']) ? TrackerInterval::DAILY : TrackerInterval::from($tracker['interval']);
 
-            $request->user()->trackers()->create([
-                'name'      => $name,
-                'color'     => $color,
-                'interval'  => $interval,
-            ])->save();
+                $request->user()->trackers()->create([
+                    'name'      => $name,
+                    'color'     => $color,
+                    'interval'  => $interval,
+                ])->save();
+            }
         });
         return true;
     }
