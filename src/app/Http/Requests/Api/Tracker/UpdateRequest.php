@@ -2,8 +2,11 @@
 
 namespace App\Http\Requests\Api\Tracker;
 
+use App\Enums\TrackerColor;
+use App\Enums\TrackerInterval;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rules\Enum;
 
 class UpdateRequest extends FormRequest
 {
@@ -24,6 +27,9 @@ class UpdateRequest extends FormRequest
     {
         return [
             'trackers' => ["required", "array"],
+            'trackers.*.name' => ["required", "string"],
+            'trackers.*.color' => ["required", "integer", new Enum(TrackerColor::class)],
+            'trackers.*.interval' => ["integer", new Enum(TrackerInterval::class)],
         ];
     }
 

@@ -27,6 +27,9 @@ class StoreRequest extends FormRequest
     {
         return [
             'trackers' => ["required", "array"],
+            'trackers.*.name' => ["required", "string"],
+            'trackers.*.color' => ["required", "integer", new Enum(TrackerColor::class)],
+            'trackers.*.interval' => ["integer", new Enum(TrackerInterval::class)],
         ];
     }
 

@@ -25,7 +25,7 @@ class TrackerService
                 $name = $tracker['name'];
                 $color = TrackerColor::from($tracker['color']);
                 $interval = empty($tracker['interval']) ? TrackerInterval::DAILY : TrackerInterval::from($tracker['interval']);
-
+                // dd($interval);
                 $request->user()->trackers()->create([
                     'name'      => $name,
                     'color'     => $color,

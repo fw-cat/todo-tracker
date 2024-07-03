@@ -22,6 +22,7 @@ class Tracker extends Model
         'user_id',
         'name',
         'color',
+        'interval',
     ];
 
     /**
