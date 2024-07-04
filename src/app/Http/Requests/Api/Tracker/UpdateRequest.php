@@ -29,7 +29,7 @@ class UpdateRequest extends FormRequest
             'trackers' => ["required", "array"],
             'trackers.*.name' => ["required", "string"],
             'trackers.*.color' => ["required", "integer", new Enum(TrackerColor::class)],
-            'trackers.*.interval' => ["integer", new Enum(TrackerInterval::class)],
+            'trackers.*.interval' => ["required", "integer", new Enum(TrackerInterval::class)],
         ];
     }
 

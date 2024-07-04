@@ -60,8 +60,8 @@ class TrackerService
                     'id' => $tracker['id'],
                 ])->first();
                 $row->name = $tracker['name'];
-                $row->color = TrackerColor::from($tracker['color']['id']);
-                $row->interval = TrackerInterval::from($tracker['interval']['id']);
+                $row->color = TrackerColor::from($tracker['color']);
+                $row->interval = TrackerInterval::from($tracker['interval']);
                 $row->save();
             }
 
