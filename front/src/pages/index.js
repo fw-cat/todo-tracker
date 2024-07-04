@@ -1,21 +1,41 @@
-import * as React from "react"
+import React, { useEffect, useState } from "react"
 import axiosInstance from "../utils/api"
-
-// trackerの取得
-const getTracker = async () => {
-  let result = await axiosInstance.get("/tracker");
-  console.log(result)
-  return result ? result.data.tracker : []
-}
+import Tracker from "../components/Parts/Tracker"
+import BaseLayout from "../components/Layout/Base"
 
 const IndexPage = () => {
-  let trackers = getTracker()
-  console.log(trackers)
+  const [trackers, setTrackers] = useState([]);
+
+  useEffect(() => {
+    const fetchTrackers = async () => {
+      try {
+        const response = await axiosInstance.get('/tracker');
+        setTrackers(response.data.trackers);
+
+      } catch (error) {
+        console.error('Failed to fetch tasks:', error);
+      }
+    };
+
+    fetchTrackers();
+  }, []);
 
   return (
-    <main>
-      <h1>access</h1>
-    </main>
+    <BaseLayout>
+      <main>
+        <h1>access</h1>
+        <ul>
+          {trackers.map(tracker => {
+            return (
+              <Tracker key={tracker.id} tracker={tracker}></Tracker>
+            )
+          })}
+          <li>
+            <a href="/create">新規追加</a>
+          </li>
+        </ul>
+      </main>
+    </BaseLayout>
   )
 }
 

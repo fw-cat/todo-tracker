@@ -15,7 +15,7 @@ const LoginPage = () => {
   }
 
   return (
-    <LoginLayout>
+    <LoginLayout id="login">
       <div className="wrap">
         <main>
           <h1 className="fredericka-the-great-regular">HABIT TRACKER</h1>
