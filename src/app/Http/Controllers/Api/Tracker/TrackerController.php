@@ -68,8 +68,12 @@ class TrackerController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id): JsonResponse
+    public function destroy(Request $request): JsonResponse
     {
-        return new JsonResponse([], Response::HTTP_OK);
+        $request->user()->trackers()->delete();
+
+        return new JsonResponse([
+            'message' => "削除が完了しました",
+        ], Response::HTTP_OK);
     }
 }

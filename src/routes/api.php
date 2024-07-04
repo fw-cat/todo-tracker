@@ -20,7 +20,7 @@ Route::group(['middleware' => ['auth:sanctum,user-api']], function () {
   Route::get("/tracker/", [TrackerController::class, "index"])->name("trackers");
   Route::post("/tracker/", [TrackerController::class, "store"])->name("trackers.store");
   Route::put("/tracker/", [TrackerController::class, "update"])->name("trackers.update");
-  Route::delete("/tracker/", [TrackerController::class, "delete"])->name("trackers.delete");
+  Route::delete("/tracker/", [TrackerController::class, "destroy"])->name("trackers.delete");
 
   Route::post("/tracker/{id}/check/", [TrackerCheckController::class, "store"])->name("tracker.check.store");
 });
