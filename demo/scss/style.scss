@@ -1,0 +1,28 @@
+@import "../node_modules/normalize-scss/sass/normalize";
+@include normalize();
+
+@import "./components/utilities";
+@include utilities();
+
+body {
+  position: relative;
+  background: url(/images/common/bg.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+// body::after {
+//   content: "";
+//   display: block;
+//   bottom: 0;
+//   width: 100vw;
+//   aspect-ratio: 2560/410;
+//   background-image: url(/images/common/bg-top@2x.png);
+//   background-repeat: no-repeat;
+//   background-position: center;
+//   background-size: cover;
+
+//   position: fixed;
+// }
+
+@import "./pages/login";

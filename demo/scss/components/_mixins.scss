@@ -1,0 +1,12 @@
+@mixin d-flex(
+  $flex-direction: column,
+  $flex-wrap: unset,
+  $align-items: normal,
+  $align-content: normal,
+) {
+  display: flex;
+  flex-direction: $flex-direction;
+  flex-wrap: $flex-wrap;
+  align-items: $align-items;
+  align-content: $align-content;
+}

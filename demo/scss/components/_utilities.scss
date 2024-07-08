@@ -1,0 +1,46 @@
+@use "./variables" as variables;
+
+@mixin utilities() {
+  // ボタンベース
+  .btn, button {
+    display: flex;
+    width: fit-content;
+    text-decoration: none;
+    letter-spacing: .1em;
+    padding-inline: 1em;
+    padding-block: .5em;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+
+    i {
+      margin-inline-start: .1em;
+    }
+  }
+
+  // マージン系
+  .mi-auto {
+    margin-inline: auto;
+  }
+  .mb-auto {
+    margin-block: auto;
+  }
+
+  // 共通要素系
+  @each $value in variables.$displays {
+    .d-#{$value} {display: $value;}
+  }
+
+  // 回転系
+  @each $key, $value in variables.$anges {
+    .rotate-x#{$key} {
+      transform: rotateX($value);
+    }
+    .rotate-y#{$key} {
+      transform: rotateY($value);
+    }
+    .rotate-z#{$key} {
+      transform: rotateZ($value);
+    }
+  }
+}

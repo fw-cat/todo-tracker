@@ -3,49 +3,49 @@
 @import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0');
 
-.m-plus-rounded-1c-thin {
+@mixin m-plus-rounded-1c-thin {
   font-family: "M PLUS Rounded 1c", sans-serif;
   font-weight: 100;
   font-style: normal;
 }
 
-.m-plus-rounded-1c-light {
+@mixin m-plus-rounded-1c-light {
   font-family: "M PLUS Rounded 1c", sans-serif;
   font-weight: 300;
   font-style: normal;
 }
 
-.m-plus-rounded-1c-regular {
+@mixin m-plus-rounded-1c-regular {
   font-family: "M PLUS Rounded 1c", sans-serif;
   font-weight: 400;
   font-style: normal;
 }
 
-.m-plus-rounded-1c-medium {
+@mixin m-plus-rounded-1c-medium {
   font-family: "M PLUS Rounded 1c", sans-serif;
   font-weight: 500;
   font-style: normal;
 }
 
-.m-plus-rounded-1c-bold {
+@mixin m-plus-rounded-1c-bold {
   font-family: "M PLUS Rounded 1c", sans-serif;
   font-weight: 700;
   font-style: normal;
 }
 
-.m-plus-rounded-1c-extrabold {
+@mixin m-plus-rounded-1c-extrabold {
   font-family: "M PLUS Rounded 1c", sans-serif;
   font-weight: 800;
   font-style: normal;
 }
 
-.m-plus-rounded-1c-black {
+@mixin m-plus-rounded-1c-black {
   font-family: "M PLUS Rounded 1c", sans-serif;
   font-weight: 900;
   font-style: normal;
 }
 
-.fredericka-the-great-regular {
+@mixin fredericka-the-great-regular {
   font-family: "Fredericka the Great", serif;
   font-weight: 400;
   font-style: normal;
@@ -55,7 +55,7 @@
  * <weight>: Use a value from 200 to 1000
  * <slant>: Use a value from -11 to 11
  */
-.cairo-play-fw-100-sl--11 {
+@mixin cairo-play-fw-100-sl--11 {
   font-family: "Cairo Play", sans-serif;
   font-optical-sizing: auto;
   font-weight: 100;
@@ -63,7 +63,7 @@
   font-variation-settings: "slnt" -11;
 }
 
-.sevillana-regular {
+@mixin sevillana-regular {
   font-family: "Sevillana", cursive;
   font-weight: 400;
   font-style: normal;
@@ -72,7 +72,7 @@
 /**
  * <weight>: Use a value from 200 to 1000
  */
-.nunito-sans-fw-200 {
+@mixin nunito-sans-fw-200 {
   font-family: "Nunito Sans", sans-serif;
   font-optical-sizing: auto;
   font-weight: 200;
@@ -82,17 +82,17 @@
     "YTLC" 500;
 }
 
-.lxgw-wenkai-tc-light {
+@mixin lxgw-wenkai-tc-light {
   font-family: "LXGW WenKai TC", cursive;
   font-weight: 300;
   font-style: normal;
 }
-.lxgw-wenkai-tc-regular {
+@mixin lxgw-wenkai-tc-regular {
   font-family: "LXGW WenKai TC", cursive;
   font-weight: 400;
   font-style: normal;
 }
-.lxgw-wenkai-tc-bold {
+@mixin lxgw-wenkai-tc-bold {
   font-family: "LXGW WenKai TC", cursive;
   font-weight: 700;
   font-style: normal;
@@ -101,7 +101,7 @@
 /**
  * <weight>: Use a value from 100 to 900
  */
-.raleway-fw-100 {
+@mixin raleway-fw-100 {
   font-family: "Raleway", sans-serif;
   font-optical-sizing: auto;
   font-weight: 100;
@@ -111,7 +111,7 @@
 /**
  * <weight>: Use a value from 100 to 900
  */
-.noto-sans-jp-fw-100 {
+@mixin noto-sans-jp-fw-100 {
   font-family: "Noto Sans JP", sans-serif;
   font-optical-sizing: auto;
   font-weight: 100;
@@ -121,15 +121,32 @@
 /**
  * <weight>: Use a value from 100 to 900
  */
-.roboto-slab-fw-100 {
+@mixin roboto-slab-fw-100 {
   font-family: "Roboto Slab", serif;
   font-optical-sizing: auto;
   font-weight: 100;
   font-style: normal;
 }
-.roboto-slab-fw-900 {
+@mixin roboto-slab-fw-900 {
   font-family: "Roboto Slab", serif;
   font-optical-sizing: auto;
   font-weight: 900;
   font-style: normal;
+}
+
+@mixin material-symbols-outlined($font-size: 1.5em, $font-color: variables.$label-color) {
+  color: $font-color;
+  font-family: 'Material Symbols Outlined';
+  font-weight: normal;
+  font-style: normal;
+  font-size: $font-size;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
 }
