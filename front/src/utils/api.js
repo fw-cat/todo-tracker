@@ -2,6 +2,7 @@ import axios from 'axios';
 import { navigate } from 'gatsby';
 
 const BASE_URL = process.env.REACT_APP_API_BASE_URL
+console.log(process.env, BASE_URL)
 
 const getToken = () => {
   let token = localStorage.getItem("auth_token")
