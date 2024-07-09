@@ -11,10 +11,10 @@
     "develop": "gatsby develop",
     "start": "gatsby develop",
     "build": "gatsby build",
-    "re-build": "npm run env && gatsby build",
+    "re-build": "npm run clean && npm run env && gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "env": "echo 'REACT_APP_API_BASE_URL=https://api.todo.framework-cat.jp' > .env"
+    "env": "echo 'GATSBY_APP_API_BASE_URL=https://api.todo.framework-cat.jp' > .env.production"
   },
   "dependencies": {
     "axios": "^1.7.2",
