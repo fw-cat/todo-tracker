@@ -3,22 +3,25 @@
 @import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0');
 
-@mixin m-plus-rounded-1c-thin {
+@mixin m-plus-rounded-1c-thin($font-size: 1em) {
   font-family: "M PLUS Rounded 1c", sans-serif;
   font-weight: 100;
   font-style: normal;
+  font-size: $font-size;
 }
 
-@mixin m-plus-rounded-1c-light {
+@mixin m-plus-rounded-1c-light($font-size: 1em) {
   font-family: "M PLUS Rounded 1c", sans-serif;
   font-weight: 300;
   font-style: normal;
+  font-size: $font-size;
 }
 
-@mixin m-plus-rounded-1c-regular {
+@mixin m-plus-rounded-1c-regular($font-size: 1em) {
   font-family: "M PLUS Rounded 1c", sans-serif;
   font-weight: 400;
   font-style: normal;
+  font-size: $font-size;
 }
 
 @mixin m-plus-rounded-1c-medium {
@@ -45,10 +48,12 @@
   font-style: normal;
 }
 
-@mixin fredericka-the-great-regular {
+@mixin fredericka-the-great-regular($font-size: 2rem, $font-color: variables.$font-color) {
   font-family: "Fredericka the Great", serif;
   font-weight: 400;
   font-style: normal;
+  color: $font-color;
+  font-size: $font-size;
 }
 
 /**

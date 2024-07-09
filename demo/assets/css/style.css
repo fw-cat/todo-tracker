@@ -1,3 +1,7 @@
+@import url("https://fonts.googleapis.com/css2?family=Cairo+Play:slnt,wght@-11..11,200..1000&family=LXGW+WenKai+TC:wght@300;400;700&family=Noto+Sans+JP:wght@100..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto+Slab:wght@100..900&family=Sevillana&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0");
 /*! normalize-scss | MIT/GPLv2 License | bit.ly/normalize-scss */
 /* Document
    ========================================================================== */
@@ -9,6 +13,22 @@
 @import url("https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0");
+/**
+ * <weight>: Use a value from 200 to 1000
+ * <slant>: Use a value from -11 to 11
+ */
+/**
+ * <weight>: Use a value from 200 to 1000
+ */
+/**
+ * <weight>: Use a value from 100 to 900
+ */
+/**
+ * <weight>: Use a value from 100 to 900
+ */
+/**
+ * <weight>: Use a value from 100 to 900
+ */
 html {
   line-height: 1.15; /* 1 */
   -webkit-text-size-adjust: 100%; /* 2 */
@@ -492,12 +512,69 @@ template {
           transform: rotateZ(360deg);
 }
 
+:root {
+  font-size: 62.75%;
+}
+
 body {
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 1.6em;
   position: relative;
   background: url(/images/common/bg.jpg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+}
+body .wrap {
+  width: 100vw;
+  min-height: 100vh;
+}
+
+header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: unset;
+      flex-wrap: unset;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-line-pack: normal;
+      align-content: normal;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  background-image: url(/images/common/header-bg@2x.png);
+  background-repeat: repeat-x;
+  background-size: contain;
+  font-size: 34pt;
+  padding-block: 0.6em 1em;
+  padding-inline: 0.5em;
+}
+header h1 {
+  font-family: "Fredericka the Great", serif;
+  font-weight: 400;
+  font-style: normal;
+  color: #ffffff;
+  font-size: 1em;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+header a {
+  display: block;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+header a img {
+  height: 0.8em;
 }
 
 /**
@@ -517,8 +594,6 @@ body {
  * <weight>: Use a value from 100 to 900
  */
 #login .wrap {
-  width: 100vw;
-  min-height: 100vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -533,6 +608,9 @@ body {
           align-items: normal;
   -ms-flex-line-pack: normal;
       align-content: normal;
+  -webkit-box-pack: normal;
+      -ms-flex-pack: normal;
+          justify-content: normal;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -555,6 +633,9 @@ body {
           align-items: normal;
   -ms-flex-line-pack: normal;
       align-content: normal;
+  -webkit-box-pack: normal;
+      -ms-flex-pack: normal;
+          justify-content: normal;
   width: clamp(400px, 40%, 800px);
   gap: 1em;
 }
@@ -563,6 +644,7 @@ body {
   font-weight: 400;
   font-style: normal;
   color: #ffffff;
+  font-size: 34pt;
   text-align: center;
 }
 #login .wrap main .main-form form {
@@ -596,7 +678,9 @@ body {
           align-items: center;
   -ms-flex-line-pack: stretch;
       align-content: stretch;
-  background-color: rgba(255, 255, 255, 0.5019607843);
+  -webkit-box-pack: normal;
+      -ms-flex-pack: normal;
+          justify-content: normal;
   position: absolute;
   width: -webkit-min-content;
   width: -moz-min-content;
@@ -608,14 +692,17 @@ body {
   z-index: 2;
 }
 #login .wrap main .main-form form .form-group :has(input:not(:-moz-placeholder-shown)) {
+  background-color: rgba(255, 255, 255, 0.5019607843);
   width: min(380px, 40%);
   gap: 0.5em;
 }
 #login .wrap main .main-form form .form-group :has(input:not(:-ms-input-placeholder)) {
+  background-color: rgba(255, 255, 255, 0.5019607843);
   width: min(380px, 40%);
   gap: 0.5em;
 }
 #login .wrap main .main-form form .form-group:focus-within, #login .wrap main .main-form form .form-group :has(input:not(:placeholder-shown)) {
+  background-color: rgba(255, 255, 255, 0.5019607843);
   width: min(380px, 40%);
   gap: 0.5em;
 }

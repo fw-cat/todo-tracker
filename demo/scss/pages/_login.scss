@@ -4,9 +4,6 @@
 
 #login {
   .wrap {
-    width: 100vw;
-    min-height: 100vh;
-
     @include mixins.d-flex();
     justify-content: center;
     align-items: center;
@@ -17,8 +14,7 @@
       gap: 1em;
 
       h1 {
-        @include fonts.fredericka-the-great-regular();
-        color: variables.$font-color;
+        @include fonts.fredericka-the-great-regular($font-size: 34pt, $font-color: variables.$font-color);
         text-align: center;
       }
 
@@ -42,7 +38,6 @@
 
           .form-group {
             @include mixins.d-flex($flex-wrap: wrap, $flex-direction: row, $align-items: center, $align-content: stretch);
-            background-color: #ffffff80;
             position: absolute;
             width: min-content;
             left: 0;
@@ -52,6 +47,7 @@
             z-index: 2;
 
             &:focus-within, :has(input:not(:placeholder-shown)) {
+              background-color: #ffffff80;
               width: min(380px, 40%);
               gap: .5em;
             }

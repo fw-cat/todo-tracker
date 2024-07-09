@@ -1,15 +1,30 @@
+@use "./components/fonts" as fonts;
+@use "./components/mixins" as mixins;
+@use "./components/variables" as variables;
+
 @import "../node_modules/normalize-scss/sass/normalize";
 @include normalize();
 
 @import "./components/utilities";
 @include utilities();
 
+:root {
+  font-size: 62.75%;
+}
+
 body {
+  @include fonts.m-plus-rounded-1c-regular($font-size: 1.6em);
+
   position: relative;
   background: url(/images/common/bg.jpg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+
+  .wrap {
+    width: 100vw;
+    min-height: 100vh;
+  }
 }
 // body::after {
 //   content: "";
@@ -25,4 +40,31 @@ body {
 //   position: fixed;
 // }
 
+header {
+  @include mixins.d-flex($flex-direction: row, $justify-content: space-between, $align-items: center);
+
+  background-image: url(/images/common/header-bg@2x.png);
+  background-repeat: repeat-x;
+  background-size: contain;
+  font-size: 34pt;
+  padding-block: .6em 1em;
+  padding-inline: .5em;
+
+  h1 {
+    @include fonts.fredericka-the-great-regular($font-size: 1em, $font-color: variables.$font-color);
+    @include mixins.zero-spacing();
+    text-align: center;
+  }
+  a {
+    display: block;
+    height: fit-content;
+
+    img {
+      height: .8em;
+    }
+  }
+}
+
 @import "./pages/login";
+@import "./pages/main";
+@import "./pages/new_user";
