@@ -1,33 +1,40 @@
+@use "./components/variables" as variables;
+
 @import url('https://fonts.googleapis.com/css2?family=Cairo+Play:slnt,wght@-11..11,200..1000&family=LXGW+WenKai+TC:wght@300;400;700&family=Noto+Sans+JP:wght@100..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto+Slab:wght@100..900&family=Sevillana&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0');
 
-@mixin m-plus-rounded-1c-thin($font-size: 1em) {
+@mixin m-plus-rounded-1c-thin($font-size: 1em, $font-color: variables.$font-color) {
   font-family: "M PLUS Rounded 1c", sans-serif;
   font-weight: 100;
   font-style: normal;
   font-size: $font-size;
+  color: $font-color;
 }
 
-@mixin m-plus-rounded-1c-light($font-size: 1em) {
+@mixin m-plus-rounded-1c-light($font-size: 1em, $font-color: variables.$font-color) {
   font-family: "M PLUS Rounded 1c", sans-serif;
   font-weight: 300;
   font-style: normal;
   font-size: $font-size;
+  color: $font-color;
 }
 
-@mixin m-plus-rounded-1c-regular($font-size: 1em) {
+@mixin m-plus-rounded-1c-regular($font-size: 1em, $font-color: variables.$font-color) {
   font-family: "M PLUS Rounded 1c", sans-serif;
   font-weight: 400;
   font-style: normal;
   font-size: $font-size;
+  color: $font-color;
 }
 
-@mixin m-plus-rounded-1c-medium {
+@mixin m-plus-rounded-1c-medium($font-size: 1em, $font-color: variables.$font-color) {
   font-family: "M PLUS Rounded 1c", sans-serif;
   font-weight: 500;
   font-style: normal;
+  font-size: $font-size;
+  color: $font-color;
 }
 
 @mixin m-plus-rounded-1c-bold {

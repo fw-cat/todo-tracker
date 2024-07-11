@@ -4,9 +4,7 @@
 
 #login {
   .wrap {
-    @include mixins.d-flex();
-    justify-content: center;
-    align-items: center;
+    @include mixins.d-flex($justify-content: center, $align-items: center);
 
     main {
       @include mixins.d-flex($flex-direction: column);
@@ -46,7 +44,7 @@
             padding: .2em;
             z-index: 2;
 
-            &:focus-within, :has(input:not(:placeholder-shown)) {
+            &:focus-within {
               background-color: #ffffff80;
               width: min(380px, 40%);
               gap: .5em;
@@ -66,9 +64,9 @@
               flex: 0 1 fit-content;
 
               label {
-                @include fonts.material-symbols-outlined($font-size: 1.5em, $font-color: variables.$label-color);
+                @include fonts.material-symbols-outlined($font-size: 1.5em, $font-color: variables.$base-color);
                 border-radius: 50%;
-                border: 2px solid variables.$label-color;
+                border: 2px solid variables.$base-color;
                 padding: .1em;
               }
             }
@@ -116,8 +114,8 @@
 
       #register {
         a {
-          background: #5471a8;
-          color: #ffffff;
+          background: variables.$base-color;
+          color: variables.$font-color;
         }
       }
     }

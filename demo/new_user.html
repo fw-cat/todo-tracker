@@ -14,13 +14,70 @@
 
 <body>
   <header>
-    <a href="/login.html"><img src="/images/common/back-btn-o@2x.png"></a>
     <h1>HABIT TRACKER</h1>
-    <div></div>
   </header>
   <section id="new_user">
     <div class="wrap">
-      //
+      <main>
+        <h1><img src="/images/new_user/titile_ribbon@2x.png"></h1>
+
+        <form>
+          <div class="form-group">
+            <label>
+              <i class="fa-solid fa-user"></i>
+              ユーザ名
+            </label>
+            <div class="form-control">
+              <input type="text" placeholder="ユーザー名">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>
+              <i class="fa-solid fa-envelope"></i>
+              E-mail
+            </label>
+            <div class="form-control">
+              <input type="email" placeholder="@gmail.com">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>
+              <i class="fa-solid fa-lock"></i>
+              パスワード
+            </label>
+            <div class="form-control">
+              <input type="text">
+              <span class="helper d-block">
+                8～16文字の半角英数字記号でご記入ください
+              </span>
+            </div>
+          </div>
+
+          <div class="form-group no-label">
+            <div class="form-control">
+              <input type="text">
+              <span class="helper d-block">
+                ※確認のために、もう一度入力してください
+              </span>
+            </div>
+          </div>
+
+          <div class="form-submit">
+            <button type="submit">
+              <img src="/images/new_user/btn_register@2x.png">
+            </button>
+          </div>
+        </form>
+
+        <div class="go_login">
+          <a href="/login.html">
+            すでに会員登録済みの方はこちら
+            <i class="fa-solid fa-pen-to-square"></i>
+          </a>
+        </div>
+      </main>
     </div>
   </section>
   <footer></footer>

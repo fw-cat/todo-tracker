@@ -13,7 +13,7 @@
 }
 
 body {
-  @include fonts.m-plus-rounded-1c-regular($font-size: 1.6em);
+  @include fonts.m-plus-rounded-1c-medium($font-size: 1.6em);
 
   position: relative;
   background: url(/images/common/bg.jpg);
@@ -41,14 +41,13 @@ body {
 // }
 
 header {
-  @include mixins.d-flex($flex-direction: row, $justify-content: space-between, $align-items: center);
+  @include mixins.d-flex($flex-direction: row, $justify-content: space-around, $align-items: center);
 
   background-image: url(/images/common/header-bg@2x.png);
   background-repeat: repeat-x;
   background-size: contain;
   font-size: 34pt;
-  padding-block: .6em 1em;
-  padding-inline: .5em;
+  height: 100px;
 
   h1 {
     @include fonts.fredericka-the-great-regular($font-size: 1em, $font-color: variables.$font-color);
