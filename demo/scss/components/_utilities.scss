@@ -52,7 +52,7 @@
   }
 
   .helper {
-    @include fonts.m-plus-rounded-1c-regular($font-size: 1em);
+    @include fonts.m-plus-rounded-1c-regular($font-size: 1em, $font-color: variables.$form-labe-color);
     padding-block-start: .5em;
     text-align: right;
   }

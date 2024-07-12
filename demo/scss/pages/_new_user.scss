@@ -54,7 +54,7 @@
         }
 
         .form-submit {
-          width: 30%;
+          width: clamp(150px, 30%, 200px);
         }
       }
 
