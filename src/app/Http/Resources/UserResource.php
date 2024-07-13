@@ -14,6 +14,7 @@ class UserResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
+        // $expiresAt = now()->addDay(10);
         return [
             'id' => $this->createToken('auth_token')->plainTextToken,
             'user_name' => $this->user_name,

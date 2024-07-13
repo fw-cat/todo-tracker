@@ -63,17 +63,25 @@ class User extends Authenticatable
     {
         return $this->hasMany(Tracker::class, "user_id", "id");
     }
+    /**
+     * 仮登録コード
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne<temporaryRegistUser>
+     */
+    public function temporaryRegistUser()
+    {
+        return $this->hasOne(TemporaryRegistUser::class, "user_id", "id");
+    }
 
     /*****************************************
      * スコープ
      */
     /**
-     * アクティブかどうか。（今後公開フラグ以外の条件も含めて外部に公開できるものかどうか）
+     * アクティブかどうか。
      * @param Builder<User> $query
      */
     public function scopeIsActive(Builder $query): void
     {
-        $query->where("status", UserStatus::REGISTERD);
+        $query->where("status", UserStatus::REGISTERD)->orWhere("status", UserStatus::PRE_REGISTER);
     }
 
     /**
