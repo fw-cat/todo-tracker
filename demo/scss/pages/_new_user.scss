@@ -1,18 +1,7 @@
 #new_user {
   .wrap {
-    @include mixins.d-flex($justify-content: flex-start, $align-items: center);
 
     main {
-      width: clamp(300px, 50vw, 1000px);
-      padding-block-start: 2em;
-
-      h1 {
-        text-align: center;
-
-        img {
-          width: 50%;
-        }
-      }
 
       form {
         @include mixins.d-flex($align-items: center);

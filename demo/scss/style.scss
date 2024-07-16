@@ -41,7 +41,13 @@ body {
 // }
 
 header {
-  @include mixins.d-flex($flex-direction: row, $justify-content: space-around, $align-items: center);
+  &:has(:nth-child(1):last-child) {
+    @include mixins.d-flex($flex-direction: row, $justify-content: space-around, $align-items: center);
+  }
+  &:has(:nth-child(3):last-child) {
+    @include mixins.d-flex($flex-direction: row, $justify-content: space-between, $align-items: center);
+    padding-inline: 1em;
+  }
 
   background-image: url(/images/common/header-bg@2x.png);
   background-repeat: repeat-x;
@@ -59,7 +65,24 @@ header {
     height: fit-content;
 
     img {
-      height: .8em;
+      height: .7em;
+    }
+  }
+}
+
+.wrap {
+  @include mixins.d-flex($justify-content: flex-start, $align-items: center);
+
+  main {
+    width: clamp(300px, 50vw, 1000px);
+    padding-block-start: 2em;
+
+    h1 {
+      text-align: center;
+
+      img {
+        width: 50%;
+      }
     }
   }
 }

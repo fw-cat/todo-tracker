@@ -1,2 +1,51 @@
 #main {
+  main {
+    width: clamp(300px,80vw,1200px);
+  }
+
+  #trackers {
+    @include mixins.d-flex(
+      $flex-direction: row,
+      $flex-wrap: wrap,
+      $align-items: flex-start,
+      $align-content: stretch,
+      $justify-content: flex-start
+    );
+    gap: 1em 2%;
+
+    .tracker {
+      @include mixins.d-flex(
+        $flex-direction: row,
+        $flex-wrap: wrap,
+        $align-items: center,
+        $justify-content: flex-start
+      );
+
+      flex: 0 0 32%;
+      min-height: 280px;
+      border-radius: 15px;
+      background-color: variables.$task-bg-color;
+    }
+
+    .new-tracker {
+      @include mixins.d-flex(
+        $flex-direction: row,
+        $flex-wrap: nowrap,
+        $align-items: center,
+        $justify-content: center
+      );
+      background-color: variables.$task-border-color;
+
+      p {
+        text-align: center;
+        width: 5em;
+        color: variables.$task-new-label;
+      }
+    }
+
+    .blank-tracker {
+      background-color: transparent;
+      border: 2px dashed variables.$task-border-color;
+    }
+  }
 }
