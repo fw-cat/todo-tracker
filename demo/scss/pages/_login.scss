@@ -44,7 +44,8 @@
             padding: .2em;
             z-index: 2;
 
-            &:focus-within {
+            &:focus-within ,
+            &:has(input.is-input) {
               background-color: #ffffff80;
               width: min(380px, 40%);
               gap: .5em;
@@ -52,11 +53,11 @@
 
             // email
             &:nth-child(2) {
-              top: 17%;
+              top: 20%;
             }
             // password
             &:nth-child(3) {
-              top: 34%;
+              top: 35%;
             }
 
             .input-icon {
@@ -75,7 +76,8 @@
               flex: 0 0 0;
               transition: .5s;
 
-              &:focus-within {
+              &:focus-within ,
+              &:has(input.is-input) {
                 flex: 1;
               }
 
