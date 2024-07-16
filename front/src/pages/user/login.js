@@ -13,21 +13,21 @@ const LoginPage = () => {
 
   return (
     <LoginLayout id="login">
-      <div class="wrap">
+      <div className="wrap">
         <main>
           <h1>HABIT TRACKER</h1>
-          <div class="main-form">
+          <div className="main-form">
             <form onSubmit={login}>
-              <div class="form-background">
-                <img src="/images/login/from.png" />
+              <div className="form-background">
+                <img src="/images/login/from.png" alt="背景" />
               </div>
-              <div class="form-group">
-                <div class="input-icon">
+              <div className="form-group">
+                <div className="input-icon">
                   <label htmlFor="email">
-                    <span class="d-block">person</span>
+                    <span className="d-block">person</span>
                   </label>
                 </div>
-                <div class="form-control">
+                <div className="form-control">
                   <input
                     type="email"
                     id="email"
@@ -40,13 +40,13 @@ const LoginPage = () => {
                 </div>
               </div>
 
-              <div class="form-group">
-                <div class="input-icon">
+              <div className="form-group">
+                <div className="input-icon">
                   <label htmlFor="password">
-                    <span class="d-block rotate-z90">key</span>
+                    <span className="d-block rotate-z90">key</span>
                   </label>
                 </div>
-                <div class="form-control">
+                <div className="form-control">
                   <input
                     type="password"
                     id="password"
@@ -59,16 +59,16 @@ const LoginPage = () => {
                 </div>
               </div>
 
-              <div class="form-submit">
+              <div className="form-submit">
                 <button type="submit">
-                  <img src="/images/login/login-btn.png" />
+                  <img src="/images/login/login-btn.png" alt="ログイン" />
                 </button>
               </div>
             </form>
 
           </div>
           <div id="register">
-            <a href="/new_user.html" class="btn mi-auto">新規登録<i class="fa-solid fa-pen-to-square"></i></a>
+            <a href="/new_user.html" class="btn mi-auto">新規登録<i className="fa-solid fa-pen-to-square"></i></a>
           </div>
         </main>
       </div>
