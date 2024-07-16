@@ -17,7 +17,8 @@ class TrackerResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'color' => [
+            'color' => $this->color,
+            "_color" => [
                 'id' => $this->color,
                 'image' => $this->color->getImage(),
                 'name' => $this->color->getName(),
