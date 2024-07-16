@@ -68,7 +68,7 @@ const LoginPage = () => {
 
           </div>
           <div id="register">
-            <a href="/new_user.html" class="btn mi-auto">新規登録<i className="fa-solid fa-pen-to-square"></i></a>
+            <a href="/user/register" className="btn mi-auto">新規登録<i className="fa-solid fa-pen-to-square"></i></a>
           </div>
         </main>
       </div>

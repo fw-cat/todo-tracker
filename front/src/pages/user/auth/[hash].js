@@ -1,8 +1,20 @@
+import { navigate } from "gatsby";
 import api from "../../../utils/api";
+import { useEffect } from "react";
 
-export default async function handler(req, res) {
-  const hash_code = req.params.hash
+const HashPage = ({ params }) => {
 
-  const responce = await api.post(`/register/${hash_code}`)
-  console.log(responce)
+  useEffect(() => {
+    const fetchData = async () => {
+      const { hash } = params
+      console.log(hash)
+      const response = await api.post(`/register/${hash}`)
+      if (response.status === 200) {
+        navigate("/")
+      }
+    }
+    fetchData()
+  }, [params])
 }
+
+export default HashPage

@@ -7,7 +7,7 @@ const setToken = (id) => {
 
 export const handleLogin = async (email, password) => {
   try {
-    let login = await axiosInstance.post(`${process.env.REACT_APP_API_BASE_URL}/login`, {
+    let login = await axiosInstance.post(`/login`, {
       email: email,
       password: password,
     });
@@ -22,7 +22,7 @@ export const handleLogin = async (email, password) => {
 
 export const handlePreRegister = async (user_name, email, password, password_confirmation) => {
   try {
-    let login = await axiosInstance.post(`${process.env.REACT_APP_API_BASE_URL}/pre_register`, {
+    let login = await axiosInstance.post(`/pre_register`, {
       user_name: user_name,
       email: email,
       password: password,

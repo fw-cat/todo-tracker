@@ -2,7 +2,6 @@ import axios from 'axios';
 import { navigate } from 'gatsby';
 
 const BASE_URL = process.env.GATSBY_APP_API_BASE_URL
-console.dir(process.env.REACT_APP_API_BASE_URL)
 console.log(process.env.GATSBY_APP_API_BASE_URL)
 
 const getToken = () => {
