@@ -6,9 +6,9 @@ const LoginLayout = ({ id, children }) => (
     <Helmet>
       <title>HABIT TRACKER</title>
     </Helmet>
-    <div id={id}>
+    <section id={id}>
       {children}
-    </div>
+    </section>
   </>
 );
 

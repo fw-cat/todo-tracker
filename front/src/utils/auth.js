@@ -20,6 +20,23 @@ export const handleLogin = async (email, password) => {
   }
 };
 
+export const handlePreRegister = async (user_name, email, password, password_confirmation) => {
+  try {
+    let login = await axiosInstance.post(`${process.env.REACT_APP_API_BASE_URL}/pre_register`, {
+      user_name: user_name,
+      email: email,
+      password: password,
+      password_confirmation: password_confirmation,
+    });
+    setToken(login.data.user.id);
+
+    navigate('/');
+
+  } catch (error) {
+    console.error('Login failed:', error);
+  }
+};
+
 export const handleLogout = async () => {
   try {
     await axiosInstance.post('/logout');
