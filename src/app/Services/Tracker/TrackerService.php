@@ -59,9 +59,12 @@ class TrackerService
                 $row = Tracker::where([
                     'id' => $tracker['id'],
                 ])->first();
+
                 $row->name = $tracker['name'];
                 $row->color = TrackerColor::from($tracker['color']);
-                $row->interval = TrackerInterval::from($tracker['interval']);
+                if (!empty($tracker['interval'])) {
+                    $row->interval = TrackerInterval::from($tracker['interval']);
+                }
                 $row->save();
             }
 
