@@ -23,7 +23,8 @@ class TrackerResource extends JsonResource
                 'image' => $this->color->getImage(),
                 'name' => $this->color->getName(),
             ],
-            'interval' => [
+            'interval' => $this->interval,
+            '_interval' => [
                 'id' => $this->interval,
                 'name' => $this->interval->getName(),
             ],
