@@ -29,6 +29,7 @@ class TrackerResource extends JsonResource
                 'name' => $this->interval->getName(),
             ],
             'count' => $this->checks->count(),
+            'is_checked' => $this->hasCheckOn(),
         ];
     }
 }

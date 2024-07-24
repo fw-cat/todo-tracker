@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Enums\TrackerColor;
 use App\Enums\TrackerInterval;
+use DateTime;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -77,5 +78,16 @@ class Tracker extends Model
     public function checks()
     {
         return $this->hasMany(TrackerCheck::class, "tracker_id", "id");
+    }
+
+    /**
+     * 当日がチェックされているか
+     */
+    public function hasCheckOn(): bool
+    {
+        $today = new DateTime();
+        return $this->checks()
+            ->whereDate('check_dt', $today)
+            ->exists();
     }
 }
