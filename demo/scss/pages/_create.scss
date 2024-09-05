@@ -1,0 +1,142 @@
+@use "./components/fonts" as fonts;
+@use "./components/mixins" as mixins;
+@use "./components/variables" as variables;
+
+@mixin styles {
+  #create {
+    .wrap {
+      main {
+        form {
+          section {
+            &.form-group {
+              position: relative;
+              background-color: variables.$font-bg-color;
+              border-radius: 1em;
+              padding-block: 4em;
+
+              & + .form-group {
+                margin-block-start: 4em;
+              }
+
+              .close {
+                position: absolute;
+                width: 2.2em;
+                right: -.8em;
+                top: -.8em;
+              }
+
+              .input-group {
+                width: 70%;
+                margin-inline: auto;
+                @include mixins.d-flex($flex-direction: row,
+                  $align-items: center);
+                gap: 1.5em;
+
+                &+.input-group {
+                  margin-block-start: 3em;
+                }
+
+                &:has(.select-area) {
+                  @include mixins.d-flex($flex-direction: row,
+                    $align-items: flex-start);
+
+                  label {
+                    padding-block-start: .5em;
+                  }
+                }
+
+                >label {
+                  @include fonts.m-plus-rounded-1c-medium($font-color: variables.$form-labe-color,
+                    $font-size: 1.6em);
+                  flex: 0 0 4.5em;
+
+                  img {
+                    height: 1em;
+                  }
+                }
+
+                div {
+                  flex: 1 1 auto;
+
+                  input:not([type="radio"], [type="checkbox"]) {
+                    background-color: variables.$task-bg-color;
+                    box-shadow: 6px 6px 11px -7px #777777;
+                  }
+
+                  &.select-area {
+                    background-color: variables.$task-bg-color;
+                    border-radius: 5px;
+                    box-shadow: 6px 6px 11px -7px #777777;
+                    padding: 1em 1em 1em 2em;
+
+                    label {
+                      color: variables.$form-labe-color;
+                    }
+
+                    &.rows {
+                      @include mixins.d-flex($flex-direction: row,
+                        $flex-wrap: wrap,
+                        $justify-content: space-between);
+                      gap: 1em 2%;
+
+                      label {
+                        flex: 0 0 32%;
+                        display: inline-flex;
+                        align-items: center;
+                        justify-content: flex-start;
+                        gap: 10%;
+                      }
+                    }
+
+                    &.columns {
+                      @include mixins.d-flex($flex-direction: column,
+                        $flex-wrap: wrap,
+                        $justify-content: space-between);
+                      gap: 1em 2%;
+
+                      label {
+                        select {
+                          width: 4em;
+                          padding: .5em 1em;
+                          margin-inline: 0.5em;
+                          border: none;
+                          border-radius: .5em;
+                          appearance: none;
+                        }
+                      }
+                    }
+
+                    img {
+                      height: 1.1em;
+                    }
+                  }
+                }
+              }
+            }
+
+            &.add-input-group {
+              text-align: center;
+
+              button {
+                margin: 3em auto 0;
+                width: 20%;
+              }
+            }
+            &.submit-group {
+              button {
+                margin: 5em auto 0;
+                width: 30%;
+
+                + a {
+                  display: block;
+                  margin: 2em auto 0;
+                  width: 20%;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

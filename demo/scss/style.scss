@@ -2,30 +2,21 @@
 @use "./components/mixins" as mixins;
 @use "./components/variables" as variables;
 
-@import "../node_modules/normalize-scss/sass/normalize";
-@include normalize();
+// 共通パーツ関連
+@use "../node_modules/normalize-scss/sass/normalize" as normalize;
+@use "./components/utilities" as utilities;
 
-@import "./components/utilities";
-@include utilities();
+// 各ページごとのSCSS
+@use "./pages/header" as header;
+@use "./pages/footer" as footer;
+@use "./pages/login" as p_login;
+@use "./pages/main" as p_main;
+@use "./pages/new_user" as p_new_user;
+@use "./pages/create" as p_create;
 
-:root {
-  font-size: 62.75%;
-}
+@include normalize.normalize();
+@include utilities.utilities();
 
-body {
-  @include fonts.m-plus-rounded-1c-medium($font-size: 1.6em);
-
-  position: relative;
-  background: url(/images/common/bg.jpg);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-
-  .wrap {
-    width: 100vw;
-    min-height: 100vh;
-  }
-}
 // body::after {
 //   content: "";
 //   display: block;
@@ -40,53 +31,10 @@ body {
 //   position: fixed;
 // }
 
-header {
-  &:has(:nth-child(1):last-child) {
-    @include mixins.d-flex($flex-direction: row, $justify-content: space-around, $align-items: center);
-  }
-  &:has(:nth-child(3):last-child) {
-    @include mixins.d-flex($flex-direction: row, $justify-content: space-between, $align-items: center);
-    padding-inline: 1em;
-  }
 
-  background-image: url(/images/common/header-bg@2x.png);
-  background-repeat: repeat-x;
-  background-size: contain;
-  font-size: 34pt;
-  height: 100px;
-
-  h1 {
-    @include fonts.fredericka-the-great-regular($font-size: 1em, $font-color: variables.$font-color);
-    @include mixins.zero-spacing();
-    text-align: center;
-  }
-  a {
-    display: block;
-    height: fit-content;
-
-    img {
-      height: .7em;
-    }
-  }
-}
-
-.wrap {
-  @include mixins.d-flex($justify-content: flex-start, $align-items: center);
-
-  main {
-    width: clamp(300px, 50vw, 1000px);
-    padding-block-start: 2em;
-
-    h1 {
-      text-align: center;
-
-      img {
-        width: 50%;
-      }
-    }
-  }
-}
-
-@import "./pages/login";
-@import "./pages/main";
-@import "./pages/new_user";
+@include header.styles();
+@include p_login.styles();
+@include p_main.styles();
+@include p_new_user.styles();
+@include p_create.styles();
+@include footer.styles();

@@ -1,0 +1,35 @@
+@use "./components/fonts" as fonts;
+@use "./components/mixins" as mixins;
+@use "./components/variables" as variables;
+
+@mixin styles {
+  header {
+    &:has(:nth-child(1):last-child) {
+      @include mixins.d-flex($flex-direction: row, $justify-content: space-around, $align-items: center);
+    }
+    &:has(:nth-child(3):last-child) {
+      @include mixins.d-flex($flex-direction: row, $justify-content: space-between, $align-items: center);
+      padding-inline: 1em;
+    }
+  
+    background-image: url(/images/common/header-bg@2x.png);
+    background-repeat: repeat-x;
+    background-size: contain;
+    font-size: 34pt;
+    height: 100px;
+  
+    h1 {
+      @include fonts.fredericka-the-great-regular($font-size: 1em, $font-color: variables.$font-color);
+      @include mixins.zero-spacing();
+      text-align: center;
+    }
+    a {
+      display: block;
+      height: fit-content;
+  
+      img {
+        height: .7em;
+      }
+    }
+  }
+}

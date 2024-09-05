@@ -1,6 +1,7 @@
 $font-color: #ffffff !default;
 $base-color: #5471a8 !default;
 
+$font-bg-color: rgba(#FFF, 0.3) !default;
 $form-labe-color: #21468E !default;
 $form-input-box-color: #ffffff4d !default;
 $form-input-placeholder-color: #707070 !default;
@@ -8,6 +9,7 @@ $form-input-placeholder-color: #707070 !default;
 $task-bg-color: #E5EBF1 !default;
 $task-border-color: rgba($task-bg-color, 0.6) !default;
 $task-new-label: #2E4A63 !default;
+$task-label: #44598A !default;
 
 $anges: (
   "45" : 45deg,

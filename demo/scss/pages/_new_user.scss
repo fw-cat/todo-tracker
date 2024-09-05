@@ -1,61 +1,65 @@
-#new_user {
-  .wrap {
+@use "./components/fonts" as fonts;
+@use "./components/mixins" as mixins;
+@use "./components/variables" as variables;
 
-    main {
-
-      form {
-        @include mixins.d-flex($align-items: center);
-        gap: 1em;
-        background-color: #ffffff4d;
-        border-radius: 1rem;
-        font-size: 1rem;
-        margin-block-start: 3em;
-        padding-block: 5em;
-
-        .form-group {
-          @include mixins.d-flex($flex-direction: row, $justify-content: space-between);
-          width: 70%;
-          margin-inline: auto;
-          padding-block-end: 2em;
-
-          label {
-            @include fonts.m-plus-rounded-1c-medium($font-size: 1.4em, $font-color: variables.$form-labe-color);
-            width: 8em;
-            padding-block-start: .7em;
-          }
-
-          &:has(+ .no-label) {
-            padding-block-end: 0;
-          }
-
-          &.no-label {
-            &::before {
-              display: block;
-              content: "";
-              font-size: 1.4em;
+@mixin styles {
+  #new_user {
+    .wrap {
+      main {
+        form {
+          @include mixins.d-flex($align-items: center);
+          gap: 1em;
+          background-color: #ffffff4d;
+          border-radius: 1rem;
+          font-size: 1rem;
+          margin-block-start: 3em;
+          padding-block: 5em;
+  
+          .form-group {
+            @include mixins.d-flex($flex-direction: row, $justify-content: space-between);
+            width: 70%;
+            margin-inline: auto;
+            padding-block-end: 2em;
+  
+            label {
+              @include fonts.m-plus-rounded-1c-medium($font-size: 1.4em, $font-color: variables.$form-labe-color);
               width: 8em;
+              padding-block-start: .7em;
+            }
+  
+            &:has(+ .no-label) {
+              padding-block-end: 0;
+            }
+  
+            &.no-label {
+              &::before {
+                display: block;
+                content: "";
+                font-size: 1.4em;
+                width: 8em;
+              }
+            }
+  
+            .form-control {
+              width: calc(100% - 8em);
             }
           }
-
-          .form-control {
-            width: calc(100% - 8em);
+  
+          .form-submit {
+            width: clamp(150px, 30%, 200px);
           }
         }
-
-        .form-submit {
-          width: clamp(150px, 30%, 200px);
-        }
-      }
-
-      .go_login {
-        width: fit-content;
-        margin-inline: auto;
-        padding-block: 2em .2em;
-        padding-inline: .2em;
-        border-bottom: 1px dashed black;
-
-        a {
-          @include fonts.m-plus-rounded-1c-medium($font-size: .8em, $font-color: variables.$form-labe-color);
+  
+        .go_login {
+          width: fit-content;
+          margin-inline: auto;
+          padding-block: 2em .2em;
+          padding-inline: .2em;
+          border-bottom: 1px dashed black;
+  
+          a {
+            @include fonts.m-plus-rounded-1c-medium($font-size: .8em, $font-color: variables.$form-labe-color);
+          }
         }
       }
     }

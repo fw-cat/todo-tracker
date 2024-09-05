@@ -1,51 +1,98 @@
-#main {
-  main {
-    width: clamp(300px,80vw,1200px);
-  }
+@use "./components/fonts" as fonts;
+@use "./components/mixins" as mixins;
+@use "./components/variables" as variables;
 
-  #trackers {
-    @include mixins.d-flex(
-      $flex-direction: row,
-      $flex-wrap: wrap,
-      $align-items: flex-start,
-      $align-content: stretch,
-      $justify-content: flex-start
-    );
-    gap: 1em 2%;
-
-    .tracker {
-      @include mixins.d-flex(
-        $flex-direction: row,
+@mixin styles {
+  #main {
+    main {
+      width: clamp(300px, 80vw, 1200px);
+    }
+  
+    #trackers {
+      @include mixins.d-flex($flex-direction: row,
+        $flex-wrap: wrap,
+        $align-items: flex-start,
+        $align-content: stretch,
+        $justify-content: flex-start);
+      gap: 1em 2%;
+  
+      .tracker {
+        border-radius: 15px;
+        background-color: variables.$task-bg-color;
+        padding-block: 1em;
+        padding-inline: .5em;
+        flex: 0 0 32%;
+        min-height: 280px;
+  
+        @include mixins.d-flex($flex-direction: column,
         $flex-wrap: wrap,
         $align-items: center,
-        $justify-content: flex-start
-      );
-
-      flex: 0 0 32%;
-      min-height: 280px;
-      border-radius: 15px;
-      background-color: variables.$task-bg-color;
-    }
-
-    .new-tracker {
-      @include mixins.d-flex(
-        $flex-direction: row,
-        $flex-wrap: nowrap,
-        $align-items: center,
-        $justify-content: center
-      );
-      background-color: variables.$task-border-color;
-
-      p {
-        text-align: center;
-        width: 5em;
-        color: variables.$task-new-label;
+        $justify-content: space-between);
+  
+        .tracker-icons {
+          width: 100%;
+          flex: 0 0 100%;
+  
+          :where(&):has(> :nth-child(8)) {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            grid-template-rows: repeat(5, 1fr);
+            grid-column-gap: 2%;
+            grid-row-gap: 2%;
+  
+            img {
+              width: 100%;
+            }
+          }
+  
+          :where(&):has(> :nth-child(-n + 7):last-child) {
+            @include mixins.d-flex($flex-direction: row,
+              $flex-wrap: wrap,
+              $align-items: center,
+              $justify-content: flex-start);
+            gap: 2%;
+  
+            img {
+              width: 12%;
+              flex: 1 1 12%;
+            }
+          }
+  
+        }
+  
+        .tracker-label {
+          width: 100%;
+          flex: 0 0 100%;
+          text-align: center;
+          @include fonts.m-plus-rounded-1c-medium(
+            $font-size: 1em,
+            $font-color: variables.$task-label
+          );
+        }
       }
-    }
-
-    .blank-tracker {
-      background-color: transparent;
-      border: 2px dashed variables.$task-border-color;
+  
+      .new-tracker {
+        @include mixins.d-flex($flex-direction: row,
+          $flex-wrap: nowrap,
+          $align-items: center,
+          $justify-content: center);
+        background-color: variables.$task-border-color;
+  
+        p {
+          text-align: center;
+          width: 5em;
+          color: variables.$task-new-label;
+  
+          img {
+            width: 100%;
+          }
+        }
+      }
+  
+      .blank-tracker {
+        background-color: transparent;
+        border: 2px dashed variables.$task-border-color;
+      }
     }
   }
 }

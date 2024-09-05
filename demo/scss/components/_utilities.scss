@@ -1,7 +1,45 @@
-@use "./variables" as variables;
-@use "./fonts" as fonts;
+@use "./components/fonts" as fonts;
+@use "./components/mixins" as mixins;
+@use "./components/variables" as variables;
 
 @mixin utilities() {
+  * {
+    box-sizing: border-box;
+  }
+
+  :root {
+    font-size: 62.75%;
+  }
+  
+  body {
+    @include fonts.m-plus-rounded-1c-medium($font-size: 1.6em);
+  
+    position: relative;
+    background: url(/images/common/bg.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  
+    .wrap {
+      width: 100vw;
+      min-height: 100vh;
+      @include mixins.d-flex($justify-content: flex-start, $align-items: center);
+
+      main {
+        width: clamp(300px, 50vw, 1000px);
+        padding-block-start: 2em;
+    
+        h1 {
+          text-align: center;
+    
+          img {
+            width: 50%;
+          }
+        }
+      }
+    }
+  }
+
   // デフォルト画像サイズ
   img {
     max-width: 100%;
@@ -37,7 +75,7 @@
   }
 
   // 入力フォーム
-  input {
+  input:not([type="radio"], [type="checkbox"]) {
     @include fonts.m-plus-rounded-1c-regular($font-size: 1.6em, $font-color: #5e5e5e);
     background-color: variables.$form-input-box-color;
     border: none;
