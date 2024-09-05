@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react"
 import axiosInstance from "../utils/api"
 import Tracker from "../components/Parts/Tracker"
 import BaseLayout from "../components/Layout/Base"
+import { navigate } from 'gatsby';
+
 
 const IndexPage = () => {
   const [trackers, setTrackers] = useState([]);
@@ -20,21 +22,37 @@ const IndexPage = () => {
     fetchTrackers();
   }, []);
 
+  const gotoCreate = () => {
+    navigate('/create');
+  }
+
   return (
-    <BaseLayout>
-      <main>
-        <h1>access</h1>
-        <ul>
-          {trackers.map(tracker => {
-            return (
-              <Tracker key={tracker.id} tracker={tracker}></Tracker>
-            )
-          })}
-          <li>
-            <a href="/create">新規追加</a>
-          </li>
-        </ul>
-      </main>
+    <BaseLayout id="main">
+      <h1><img src="/images/new_user/titile_ribbon@2x.png" alt="title" /></h1>
+
+      <section id="trackers">
+        {trackers.map(tracker => {
+          return (
+            <Tracker key={tracker.id} tracker={tracker}></Tracker>
+          )
+        })}
+
+        <div
+          role="button"
+          tabIndex={0}
+          className="tracker new-tracker"
+          onClick={gotoCreate}
+          onKeyDown={gotoCreate}>
+          <p>
+            <img src="/images/icons/new@2x.png" alt="new tracker" />
+            NEW
+          </p>
+        </div>
+        <div className="tracker blank-tracker">
+        </div>
+        <div className="tracker blank-tracker">
+        </div>
+      </section>
     </BaseLayout>
   )
 }

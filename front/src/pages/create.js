@@ -4,11 +4,12 @@ import BaseLayout from "../components/Layout/Base"
 import CreateForm from "../components/Parts/CreateForm"
 import { navigate } from "gatsby"
 
+let trackerId = 1;
 const CreatePage = () => {
   // 入力オプション
   const [colors, setColors] = useState([]);
   const [intervals, setIntervals] = useState([]);
-  const [trackers, setTrackers] = useState([{ name: '', color: '', interval: '' }]);
+  const [trackers, setTrackers] = useState([{ id: trackerId, name: '', color: '', interval: '' }]);
 
   const postTracker = async (event) => {
     event.preventDefault()
@@ -20,12 +21,16 @@ const CreatePage = () => {
   }
   const addForm = (event) => {
     event.preventDefault()
-    setTrackers([...trackers, { name: '', color: '', interval: '' }]);
+    trackerId += 1
+    setTrackers([...trackers, { id: trackerId, name: '', color: '', interval: '' }]);
   }
   const handleChange = (index, key, value) => {
     const updatedTrackers = [...trackers]
     updatedTrackers[index][key] = value
     setTrackers(updatedTrackers)
+  }
+  const formRemove = (id) => {
+    setTrackers(trackers.filter(tracker => tracker.id !== id));
   }
 
   // 初回のみ起動
@@ -44,24 +49,37 @@ const CreatePage = () => {
   },[])
 
   return (
-    <BaseLayout>
+    <BaseLayout id="create">
       <main>
-        <h1>create</h1>
         <form onSubmit={postTracker}>
+          <h1><img src="/images/create/titile_ribbon@2x.png" alt="タイトル" /></h1>
 
           {trackers.map((tracker, index) => (
-            <CreateForm key={index} index={index} colors={colors} intervals={intervals} handleChange={handleChange} />
+            <CreateForm
+              key={tracker.id}
+              index={index}
+              colors={colors}
+              intervals={intervals}
+              tracker={tracker}
+              handleChange={handleChange}
+              handleThisRemove={formRemove} />
           ))}
 
-          <div>
-            <button type="button" onClick={addForm}>追加</button>
-          </div>
-
-          <div className="form-submit">
-            <button type="submit">
-              登録
+          <section className="add-input-group">
+            <button type="button" onClick={addForm}>
+              <img src="/images/create/add_group@2x.png" alt="フォームの追加" />
             </button>
-          </div>
+          </section>
+
+          <section className="submit-group">
+            <button type="submit">
+              <img src="/images/create/register_btn@2x.png" alt="登録" />
+            </button>
+
+            <a href="/">
+              <img src="/images/create/back_link@2x.png" alt="戻る" />
+            </a>
+          </section>
         </form>
       </main>
     </BaseLayout >

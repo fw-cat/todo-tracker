@@ -10,7 +10,7 @@ const BaseLayout = ({ id, children }) => (
       <h1>HABIT TRACKER</h1>
     </header>
     <section id={id}>
-      <div class="wrap">
+      <div className="wrap">
         <main>
           { children }
         </main>

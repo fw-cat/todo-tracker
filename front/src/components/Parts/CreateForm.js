@@ -1,40 +1,62 @@
-import React, {useState} from 'react';
-import {COLORS} from "../../constants/colors"
+import React, { useState } from 'react';
+import { COLORS } from "../../constants/colors"
 
-const CreateForm = ({ index, colors, intervals, handleChange }) => {
+const CreateForm = ({
+  index,
+  colors,
+  intervals,
+  tracker,
+  handleChange,
+  handleThisRemove
+}) => {
   // 入力値
-  const [name, setName] = useState([]);
-  const [color, setColor] = useState([]);
-  const [interval, setInterval] = useState([]);
+  const [, setName] = useState([]);
 
   const onChanges = (key, event) => {
-    console.log(name, color, interval)
     handleChange(index, key, event.target.value)
+  }
+  const thisRemove = () => {
+    handleThisRemove(tracker.id)
   }
 
   return (
     <>
-      <h4>登録トラッカー {index}</h4>
-      <div>
-        <label htmlFor={`name_${index}`}>トラッカー名</label>
-        <input
-          type="text"
-          id={`name_${index}`}
-          name="name"
-          value={name}
-          onChange={(e) => {
-            onChanges("name", e);
-            setName(e.target.value)
-          }} />
-      </div>
-  
-      <div>
-        <label htmlFor='color'>トラッカー色</label>
-        <div>
-          {colors.map(color => {
-            return (
-              <div key={color.value}>
-                <label htmlFor={`${color.name}_${index}`}>
+      <section className="form-group">
+        <span
+          className="close"
+          onClick={thisRemove}
+          role="button"
+          tabIndex={0}
+          onKeyDown={thisRemove}>
+          <img src="/images/create/close_btn.svg" alt='close' />
+        </span>
+        <div className="input-group">
+          <label htmlFor={`name_${index}`}>
+            <img src="/images/create/label_pen@2x.png" alt='項目名' />
+            項目名
+          </label>
+          <div>
+            <input
+              type="text"
+              id={`name_${index}`}
+              name="name"
+              value={tracker.name}
+              onChange={(e) => {
+                onChanges("name", e);
+                setName(e.target.value)
+              }} />
+          </div>
+        </div>
+
+        <div className="input-group">
+          <label htmlFor='color'>
+            <img src="/images/create/label_palet@2x.png" alt='カラー' />
+            カラー
+          </label>
+          <div className="select-area rows">
+            {colors.map(color => {
+              return (
+                <label htmlFor={`${color.name}_${index}`} key={color.value}>
                   <input
                     type="radio"
                     value={color.value}
@@ -42,36 +64,46 @@ const CreateForm = ({ index, colors, intervals, handleChange }) => {
                     name="color"
                     onChange={(e) => {
                       onChanges("color", e)
-                      setColor(e.target.value)
                     }} />
                   <img src={COLORS[color.name]} alt={color.name} />
                 </label>
-              </div>
-            )
-          })}
+              )
+            })}
+          </div>
         </div>
-      </div>
 
-      <div>
-        <label htmlFor={`interval_${index}`}>インターバル</label>
-        <div>
-          <select
-            id={`interval_${index}`}
-            name="interval"
-            onChange={(e) => {
-              onChanges("interval", e)
-              setInterval(e.target.value)
-            }}
-          >
-          {intervals.map(interval => {
-            return (
-              <option key={interval.value}>{interval.name}</option>
-            )
-          })}
-          </select>
+        <div className="input-group">
+          <label htmlFor='interval'>
+            <img src="/images/create/label_clock@2x.png" alt='目標' />
+            目標
+          </label>
+          <div className="select-area columns">
+            <label>
+              <input type="radio" name="interval" />
+              毎日
+            </label>
+            <label>
+              <input type="radio" name="interval" />
+              週
+              <select
+                id={`interval_${index}`}
+                name="interval"
+                onChange={(e) => {
+                  onChanges("interval", e)
+                }}
+              >
+                {intervals.map(interval => {
+                  return (
+                    <option key={interval.value}>{interval.name}</option>
+                  )
+                })}
+              </select>
+              回（月<span>4</span>回）
+            </label>
+          </div>
         </div>
-      </div>
+      </section>
     </>
-  );  
+  );
 }
 export default CreateForm;
