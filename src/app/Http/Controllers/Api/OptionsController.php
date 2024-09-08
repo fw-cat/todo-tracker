@@ -22,12 +22,23 @@ class OptionsController extends Controller
                 'image' => $color->getImage(),
             ];
         }, TrackerColor::cases());
-        $intervals = array_map(function ($interval) {
-            return [
+
+        $intervals = [];
+        $intervals['daily'] = [
+            'value' => TrackerInterval::DAILY->value,
+            'name' => TrackerInterval::DAILY->getName(),
+            'max' => TrackerInterval::DAILY->maxCount(),
+        ];
+        foreach (TrackerInterval::cases() as $interval) {
+            if($interval === TrackerInterval::DAILY) {
+                continue;
+            }
+            $intervals['others'][] = [
                 'value' => $interval->value,
                 'name' => $interval->getName(),
+                'max' => $interval->maxCount(),
             ];
-        }, TrackerInterval::cases());
+        }
 
         return new JsonResponse([
             'colors' => $colors,
