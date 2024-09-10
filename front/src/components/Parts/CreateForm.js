@@ -6,6 +6,7 @@ const CreateForm = ({
   colors,
   intervals,
   tracker,
+  isRemove,
   handleChange,
   handleThisRemove
 }) => {
@@ -22,14 +23,20 @@ const CreateForm = ({
   return (
     <>
       <section className="form-group">
-        <span
-          className="close"
-          onClick={thisRemove}
-          role="button"
-          tabIndex={0}
-          onKeyDown={thisRemove}>
-          <img src="/images/create/close_btn.svg" alt='close' />
-        </span>
+
+        {isRemove ? (
+          <span
+            className="close"
+            onClick={thisRemove}
+            role="button"
+            tabIndex={0}
+            onKeyDown={thisRemove}>
+            <img src="/images/create/close_btn.svg" alt='close' />
+          </span>
+        ) : (
+          <></>
+        )}
+
         <div className="input-group">
           <label htmlFor={`name_${index}`}>
             <img src="/images/create/label_pen@2x.png" alt='項目名' />
@@ -79,7 +86,15 @@ const CreateForm = ({
           </label>
           <div className="select-area columns">
             <label>
-              <input type="radio" name="interval" />
+              <input
+                type="radio"
+                id={`interval_${index}_daily`}
+                name={`interval_${index}`}
+                value={intervals.daily.value}
+                onChange={(e) => {
+                  onChanges("interval", e)
+                }}
+              />
               毎日
             </label>
             <label>
@@ -87,14 +102,14 @@ const CreateForm = ({
               週
               <select
                 id={`interval_${index}`}
-                name="interval"
+                name={`interval_${index}`}
                 onChange={(e) => {
                   onChanges("interval", e)
                 }}
               >
-                {intervals.map(interval => {
+                {intervals['others'].map(interval => {
                   return (
-                    <option key={interval.value}>{interval.name}</option>
+                    <option key={interval.value} value={interval.value}>{interval.name}</option>
                   )
                 })}
               </select>
