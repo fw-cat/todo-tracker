@@ -26,14 +26,37 @@ const IndexPage = () => {
     navigate('/create');
   }
 
+  const trackerChecked = async (id) => {
+    try {
+      const responce = await axiosInstance.post(`/tracker/${id}/check`)
+      console.log(responce)
+    } catch (e) {
+      console.log(e)
+    }
+  }
+
+  // 空枠線を表示する数
+  const emptyCnt = () => {
+    const remainder = trackers.length % 3
+    switch(remainder) {
+      case 0: return 2;
+      case 1: return 1;
+      case 2: return 3;
+      default: return 0;
+    }
+  }
+
   return (
     <BaseLayout id="main">
-      <h1><img src="/images/new_user/titile_ribbon@2x.png" alt="title" /></h1>
+      <h1><img src="/images/main/titile_ribbon@2x.png" alt="title" /></h1>
 
       <section id="trackers">
         {trackers.map(tracker => {
           return (
-            <Tracker key={tracker.id} tracker={tracker}></Tracker>
+            <Tracker
+              key={tracker.id}
+              tracker={tracker}
+              checked={trackerChecked} />
           )
         })}
 
@@ -48,10 +71,9 @@ const IndexPage = () => {
             NEW
           </p>
         </div>
-        <div className="tracker blank-tracker">
-        </div>
-        <div className="tracker blank-tracker">
-        </div>
+        {[...Array(emptyCnt())].map((_, index) => (
+          <div key={index} className="tracker blank-tracker"></div>
+        ))}
       </section>
     </BaseLayout>
   )
