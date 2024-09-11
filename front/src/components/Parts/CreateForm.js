@@ -19,6 +19,11 @@ const CreateForm = ({
   const thisRemove = () => {
     handleThisRemove(tracker.id)
   }
+  const handleIntervalChange = (event) => {
+    const { name } = event.target
+    document.getElementById(`${name}_weekly`).checked = true
+    onChanges('interval', event)
+  }
 
   return (
     <>
@@ -63,12 +68,14 @@ const CreateForm = ({
           <div className="select-area rows">
             {colors.map(color => {
               return (
-                <label htmlFor={`${color.name}_${index}`} key={color.value}>
+                <label
+                  key={`${color.value}__${index}`}
+                  htmlFor={`${color.name}_${index}`} >
                   <input
                     type="radio"
                     value={color.value}
                     id={`${color.name}_${index}`}
-                    name={`name_${index}`}
+                    name={`color_${index}`}
                     onChange={(e) => {
                       onChanges("color", e)
                     }} />
@@ -92,24 +99,35 @@ const CreateForm = ({
                 name={`interval_${index}`}
                 value={intervals.daily.value}
                 onChange={(e) => {
-                  onChanges("interval", e)
+                  onChanges('interval', e)
                 }}
               />
               毎日
             </label>
             <label>
-              <input type="radio" name="interval" />
+              <input
+                type="radio"
+                id={`interval_${index}_weekly`}
+                name={`interval_${index}`}
+                value="weekly"
+                onChange={(e) => {
+                  onChanges('interval', e)
+                }} />
               週
               <select
                 id={`interval_${index}`}
                 name={`interval_${index}`}
                 onChange={(e) => {
-                  onChanges("interval", e)
+                  handleIntervalChange(e)
                 }}
               >
                 {intervals['others'].map(interval => {
                   return (
-                    <option key={interval.value} value={interval.value}>{interval.name}</option>
+                    <option
+                      key={`${interval.value}__${index}`}
+                      value={interval.value}>
+                        {interval.name}
+                    </option>
                   )
                 })}
               </select>

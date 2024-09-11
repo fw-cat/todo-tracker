@@ -4,14 +4,15 @@ import BaseLayout from "../components/Layout/Base"
 import CreateForm from "../components/Parts/CreateForm"
 import { navigate } from "gatsby"
 
-let trackerId = 1;
-let optionsFlg = false;
 const CreatePage = () => {
   // 入力オプション
   const [colors, setColors] = useState([])
   const [intervals, setIntervals] = useState({})
-  const [trackers, setTrackers] = useState([{ id: trackerId, name: '', color: '', interval: '' }])
   const [isRemove, setIsRemove] = useState(false)
+  const [trackerId, setTrackerId] = useState(1)
+  const [trackers, setTrackers] = useState([{ id: trackerId, name: '', color: '', interval: '' }])
+  const [optionsLoaded, setOptionsLoaded] = useState(false)
+
 
   const postTracker = async (event) => {
     event.preventDefault()
@@ -23,8 +24,10 @@ const CreatePage = () => {
   }
   const addForm = (event) => {
     event.preventDefault()
-    trackerId += 1
-    setTrackers([...trackers, { id: trackerId, name: '', color: '', interval: '' }])
+    const newTrackerId = trackerId + 1
+    setTrackerId(newTrackerId + 1)
+    setTrackers([...trackers, { id: newTrackerId, name: '', color: '', interval: '' }])
+    console.log(trackers)
     setIsRemove(true)
   }
   const handleChange = (index, key, value) => {
@@ -33,30 +36,29 @@ const CreatePage = () => {
     setTrackers(updatedTrackers)
   }
   const formRemove = (id) => {
-    setTrackers(trackers.filter(tracker => tracker.id !== id));
-    if (trackers.length > 1) {
-      setIsRemove(true)
-    } else {
-      setIsRemove(false)
-    }
+    setTrackers(prevTrackers => prevTrackers.filter(tracker => tracker.id !== id))
+    setIsRemove(prevTrackers => prevTrackers.length > 2)
+
   }
 
   // Render毎
   useEffect(() => {
     // 入力オプションを取得
     const getOptions = async () => {
-      try {
-        const responce = await axiosInstance.get("/tmp/options")
-        setColors(responce.data.colors)
-        setIntervals(responce.data.intervals)
-        optionsFlg = true
-      } catch (e) {
-        console.log(e)
+      if (!optionsLoaded) {
+        try {
+          const responce = await axiosInstance.get("/tmp/options")
+          setColors(responce.data.colors)
+          setIntervals(responce.data.intervals)
+          setOptionsLoaded(true)
+        } catch (e) {
+          console.log(e)
+        }
       }
     };
 
     getOptions()
-  })
+  }, [optionsLoaded])
 
   return (
     <BaseLayout id="create">
@@ -64,7 +66,7 @@ const CreatePage = () => {
         <form onSubmit={postTracker}>
           <h1><img src="/images/create/titile_ribbon@2x.png" alt="タイトル" /></h1>
 
-          {optionsFlg ? (
+          {optionsLoaded ? (
             <>
               {trackers.map((tracker, index) => (
                 <CreateForm
