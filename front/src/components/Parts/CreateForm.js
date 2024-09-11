@@ -56,7 +56,7 @@ const CreateForm = ({
         </div>
 
         <div className="input-group">
-          <label htmlFor='color'>
+          <label htmlFor={`name_${index}`}>
             <img src="/images/create/label_palet@2x.png" alt='カラー' />
             カラー
           </label>
@@ -68,7 +68,7 @@ const CreateForm = ({
                     type="radio"
                     value={color.value}
                     id={`${color.name}_${index}`}
-                    name="color"
+                    name={`name_${index}`}
                     onChange={(e) => {
                       onChanges("color", e)
                     }} />
@@ -80,7 +80,7 @@ const CreateForm = ({
         </div>
 
         <div className="input-group">
-          <label htmlFor='interval'>
+          <label htmlFor={`interval_${index}`}>
             <img src="/images/create/label_clock@2x.png" alt='目標' />
             目標
           </label>
