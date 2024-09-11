@@ -41,7 +41,7 @@ const CreatePage = () => {
     }
   }
 
-  // 初回のみ起動
+  // Render毎
   useEffect(() => {
     // 入力オプションを取得
     const getOptions = async () => {
@@ -56,7 +56,7 @@ const CreatePage = () => {
     };
 
     getOptions()
-  }, [])
+  })
 
   return (
     <BaseLayout id="create">
