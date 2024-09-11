@@ -16,7 +16,7 @@ class TrackerResource extends JsonResource
     public function toArray(Request $request): array
     {
         // 月カウント（月末日）を取得
-        $toMonth = Carbon::now()->endOfMonth();;
+        $toMonth = Carbon::now()->endOfMonth();
 
         return [
             'id' => $this->id,

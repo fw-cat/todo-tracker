@@ -22,9 +22,8 @@ class TrackerCheck extends Model
     // 当月分のみを取得できるスコープ
     public function scopeToMonth($query)
     {
-        $toDay = Carbon::now();
-        $from = $toDay->firstOfMonth();
-        $to = $toDay->lastOfMonth();
+        $from = Carbon::now()->startOfMonth();
+        $to = Carbon::now()->lastOfMonth();
         return $query->whereBetween('check_dt', [$from, $to]);
     }
 }

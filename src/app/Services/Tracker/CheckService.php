@@ -5,6 +5,7 @@ namespace App\Services\Tracker;
 use App\Exceptions\DuplicateTrackerCheckException;
 use App\Exceptions\TrackerNotFoundException;
 use App\Http\Requests\Api\TrackerCheck\StoreRequest;
+use Carbon\Carbon;
 use DateTime;
 
 class CheckService
@@ -19,21 +20,21 @@ class CheckService
             throw new TrackerNotFoundException();
         }
 
-        $target_dt = new DateTime();
-        if ($target_dt->format('H') < config('const.tracker.check.base_time')) {
+        $target_dt = Carbon::now();
+        if ($target_dt->hour < config('const.tracker.check.base_time')) {
             // 4時前なら、日付を1日前に戻す
-            $target_dt->modify('-1 day');
+            $target_dt->subDays(1);
         }
 
         $isExists = $collection->first()->checks()->where([
-            'check_dt' => $target_dt,
+            'check_dt' => $target_dt->toDateString(),
         ])->exists();
         if ($isExists) {
             throw new DuplicateTrackerCheckException();
         }
 
         $collection->first()->checks()->create([
-            'check_dt' => $target_dt,
+            'check_dt' => $target_dt->toDateString(),
         ]);
         return true;
     }
