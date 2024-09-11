@@ -28,8 +28,9 @@ const IndexPage = () => {
 
   const trackerChecked = async (id) => {
     try {
-      const responce = await axiosInstance.post(`/tracker/${id}/check`)
-      console.log(responce)
+      const response = await axiosInstance.post(`/tracker/${id}/check`)
+      console.log(response)
+      setTrackers(response.data.trackers);
     } catch (e) {
       console.log(e)
     }
