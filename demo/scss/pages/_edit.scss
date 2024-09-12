@@ -1,0 +1,90 @@
+@use "./components/fonts" as fonts;
+@use "./components/mixins" as mixins;
+@use "./components/variables" as variables;
+
+@mixin styles {
+  #edit {
+    .wrap {
+      main {
+        width: clamp(300px, 80vw, 1200px);
+
+        form {
+          #trackers {
+            @include mixins.d-flex($flex-direction: row,
+              $flex-wrap: wrap,
+              $align-items: flex-start,
+              $align-content: stretch,
+              $justify-content: flex-start);
+            gap: 3em 2%;
+
+            .tracker {
+              position: relative;
+
+              border-radius: 15px;
+              background-color: variables.$task-bg-color;
+              padding: 2em 1em;
+              flex: 0 0 32%;
+              min-height: 280px;
+
+              @include mixins.d-flex($flex-direction: column,
+                $flex-wrap: wrap,
+                $align-items: center,
+                $justify-content: space-around);
+              // row-gap: 2em;
+
+              .close {
+                position: absolute;
+                width: 2.2em;
+                right: -.8em;
+                top: -.8em;
+              }
+
+              .tracker-colors {
+                @include mixins.d-flex($flex-direction: row,
+                  $flex-wrap: wrap,
+                  $justify-content: center);
+                gap: 1em 0%;
+                width: 80%;
+
+                label {
+                  flex: 0 0 40%;
+                  display: inline-flex;
+                  align-items: center;
+                  justify-content: flex-start;
+                  gap: 10%;
+
+                  img {
+                    height: 1.5em;
+                  }
+                }
+              }
+
+              .tracker-label {
+                width: 100%;
+
+                input {
+                  text-align: center;
+                  border: 1px solid variables.$form-input-border-color;
+                  @include fonts.m-plus-rounded-1c-regular($font-color: variables.$task-label );
+                }
+              }
+            }
+
+            & + div {
+              margin-block-start: 4em;
+
+              button {
+                width: 20%;
+                margin-inline: auto;
+
+                img {
+                  width: 100%;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

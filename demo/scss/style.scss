@@ -13,6 +13,7 @@
 @use "./pages/main" as p_main;
 @use "./pages/new_user" as p_new_user;
 @use "./pages/create" as p_create;
+@use "./pages/edit" as p_edit;
 
 @include normalize.normalize();
 @include utilities.utilities();
@@ -37,4 +38,5 @@
 @include p_main.styles();
 @include p_new_user.styles();
 @include p_create.styles();
+@include p_edit.styles();
 @include footer.styles();
