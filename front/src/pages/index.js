@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react"
 import axiosInstance from "../utils/api"
 import Tracker from "../components/Parts/Tracker"
 import BaseLayout from "../components/Layout/Base"
-import { navigate } from 'gatsby';
+import { navigate, Link } from 'gatsby';
 
 
 const IndexPage = () => {
@@ -47,8 +47,21 @@ const IndexPage = () => {
     }
   }
 
+  // ヘッダー
+  const headerContent = (
+    <>
+      <Link to="/create">
+        <img src="/images/icons/setting@2x.png" alt="設定" />
+      </Link>
+      <h1>HABIT TRACKER</h1>
+      <Link to="/edit" state={{ trackers: trackers }}>
+        <img src="/images/icons/edit@2x.png" alt="修正" />
+      </Link>
+    </>
+  );
+
   return (
-    <BaseLayout id="main">
+    <BaseLayout id="main" headerContent={headerContent}>
       <h1><img src="/images/main/titile_ribbon@2x.png" alt="title" /></h1>
 
       <section id="trackers">

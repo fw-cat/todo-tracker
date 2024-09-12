@@ -1,13 +1,13 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 
-const BaseLayout = ({ id, children }) => (
+const BaseLayout = ({ id, children, headerContent }) => (
   <>
     <Helmet>
       <title>HABIT TRACKER</title>
     </Helmet>
     <header>
-      <h1>HABIT TRACKER</h1>
+      {headerContent || <h1>HABIT TRACKER</h1>}
     </header>
     <section id={id}>
       <div className="wrap">

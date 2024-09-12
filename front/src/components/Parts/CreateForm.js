@@ -36,7 +36,7 @@ const CreateForm = ({
             role="button"
             tabIndex={0}
             onKeyDown={thisRemove}>
-            <img src="/images/create/close_btn.svg" alt='close' />
+            <img src="/images/icons/close_btn.svg" alt='close' />
           </span>
         ) : (
           <></>
