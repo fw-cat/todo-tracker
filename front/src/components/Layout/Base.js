@@ -11,12 +11,10 @@ const BaseLayout = ({ id, children, headerContent }) => (
     </header>
     <section id={id}>
       <div className="wrap">
-        <main>
-          { children }
-        </main>
+        <main>{children}</main>
       </div>
     </section>
-    <footer></footer>
+    <footer />
   </>
 );
 
