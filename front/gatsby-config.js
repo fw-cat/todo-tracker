@@ -6,15 +6,15 @@ require('dotenv').config()
 
 module.exports = {
   siteMetadata: {
-    title: `Todo Tracker`,
-    siteUrl: `https://www.yourdomain.tld`,
+    title: `HABIT TRAKER`,
+    siteUrl: `https://flog-tracker.netlify.app`,
   },
   plugins: [
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `GatsbyJS`,
-        short_name: `GatsbyJS`,
+        name: `HABIT TRAKER`,
+        short_name: `HABIT TRAKER`,
         start_url: `/`,
         background_color: `#f7f0eb`,
         theme_color: `#a2466c`,
