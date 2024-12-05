@@ -6,15 +6,15 @@ require('dotenv').config()
 
 module.exports = {
   siteMetadata: {
-    title: `HABIT TRAKER`,
-    siteUrl: `https://flog-tracker.netlify.app`,
+    title: `KERO TRAKER`,
+    siteUrl: `https://kero-tracker.netlify.app`,
   },
   plugins: [
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `HABIT TRAKER`,
-        short_name: `HABIT TRAKER`,
+        name: `KERO TRAKER`,
+        short_name: `KERO TRAKER`,
         start_url: `/`,
         background_color: `#f7f0eb`,
         theme_color: `#a2466c`,
@@ -23,7 +23,7 @@ module.exports = {
         icons: [
           {
             src: `src/images/icon.png`,
-            sizes: `512x512`,
+            sizes: `1024x1024`,
             type: `image/png`,
           },
         ],
