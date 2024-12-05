@@ -1,3 +1,5 @@
+@use "./variables" as variables;
+
 @mixin d-flex(
   $flex-direction: column,
   $flex-wrap: unset,
@@ -16,4 +18,70 @@
 @mixin zero-spacing() {
   padding: 0;
   margin: 0;
+}
+
+// グリッドブレイクポイントに基づくブレイクポイントmixin
+@mixin breakpoint($breakpoint) {
+  @if map-has-key(variables.$grid-breakpoints, $breakpoint) {
+    $value: map-get(variables.$grid-breakpoints, $breakpoint);
+    
+    // 最小のブレイクポイント（xs）の場合、min-widthを0とする
+    @if $value == 0 {
+      @content;
+    }
+    @else {
+      @media (min-width: $value) {
+        @content;
+      }
+    }
+  }
+  @else {
+    @warn "指定されたブレイクポイント `#{$breakpoint}` は見つかりませんでした。" 
+        + "利用可能なブレイクポイント: #{map-keys(variables.$grid-breakpoints)}";
+  }
+}
+
+// max-widthブレイクポイントmixin
+@mixin breakpoint-max($breakpoint) {
+  @if map-has-key(variables.$grid-breakpoints, $breakpoint) {
+    $value: map-get(variables.$grid-breakpoints, $breakpoint);
+    $next-breakpoint: null;
+    
+    // 次のブレイクポイントを探す
+    $breakpoint-keys: map-keys(variables.$grid-breakpoints);
+    $index: index($breakpoint-keys, $breakpoint);
+    
+    @if $index < length($breakpoint-keys) {
+      $next-breakpoint: nth($breakpoint-keys, $index + 1);
+      $next-value: map-get(variables.$grid-breakpoints, $next-breakpoint);
+      
+      @media (max-width: ($next-value - 1px)) {
+        @content;
+      }
+    }
+    @else {
+      // 最大のブレイクポイントの場合、max-widthは適用されない
+      @warn "最大のブレイクポイントのmax-widthは決定できませんでした。";
+    }
+  }
+  @else {
+    @warn "指定されたブレイクポイント `#{$breakpoint}` は見つかりませんでした。" 
+        + "利用可能なブレイクポイント: #{map-keys(variables.$grid-breakpoints)}";
+  }
+}
+
+// ブレイクポイント間のmixin
+@mixin breakpoint-between($lower, $upper) {
+  @if map-has-key(variables.$grid-breakpoints, $lower) and map-has-key(variables.$grid-breakpoints, $upper) {
+    $lower-value: map-get(variables.$grid-breakpoints, $lower);
+    $upper-value: map-get(variables.$grid-breakpoints, $upper);
+    
+    @media (min-width: $lower-value) and (max-width: ($upper-value - 1px)) {
+      @content;
+    }
+  }
+  @else {
+    @warn "指定されたブレイクポイントが無効です。" 
+        + "利用可能なブレイクポイント: #{map-keys(variables.$grid-breakpoints)}";
+  }
 }

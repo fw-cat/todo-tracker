@@ -348,6 +348,11 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
 }
+@media (max-width: 991px) {
+  body {
+    font-size: 1.2em;
+  }
+}
 body .wrap {
   width: 100vw;
   min-height: 100vh;
@@ -359,14 +364,24 @@ body .wrap {
   justify-content: flex-start;
 }
 body .wrap main {
-  width: clamp(300px, 50vw, 1000px);
+  width: clamp(340px, 50vw, 1000px);
   padding-block-start: 2em;
+}
+@media (max-width: 991px) {
+  body .wrap main {
+    padding-block-start: 1em;
+  }
 }
 body .wrap main h1 {
   text-align: center;
 }
 body .wrap main h1 img {
   width: 50%;
+}
+@media (max-width: 991px) {
+  body .wrap main h1 img {
+    width: 100%;
+  }
 }
 
 img {
@@ -579,6 +594,11 @@ header:has(:nth-child(3):last-child) {
   justify-content: space-between;
   padding-inline: 1em;
 }
+@media (max-width: 991px) {
+  header {
+    font-size: 2em;
+  }
+}
 header h1 {
   font-family: "Fredericka the Great", serif;
   font-weight: 400;
@@ -595,6 +615,11 @@ header a {
 }
 header a img {
   height: 0.7em;
+}
+@media (max-width: 991px) {
+  header a img {
+    height: 1em;
+  }
 }
 
 #login .wrap {
@@ -724,7 +749,7 @@ header a img {
 }
 
 #main main {
-  width: clamp(300px, 80vw, 1200px);
+  width: clamp(340px, 80vw, 1200px);
 }
 #main #trackers {
   display: flex;
@@ -735,6 +760,12 @@ header a img {
   justify-content: flex-start;
   gap: 1em 2%;
 }
+@media (max-width: 991px) {
+  #main #trackers {
+    column-gap: 4%;
+    justify-content: space-between;
+  }
+}
 #main #trackers .tracker {
   border-radius: 15px;
   background-color: #E5EBF1;
@@ -744,14 +775,26 @@ header a img {
   min-height: 280px;
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   align-items: center;
   align-content: normal;
   justify-content: space-between;
 }
+@media (max-width: 991px) {
+  #main #trackers .tracker {
+    flex: 0 0 48%;
+    min-height: auto;
+    aspect-ratio: 1/1;
+  }
+}
 #main #trackers .tracker .tracker-icons {
   width: 100%;
   flex: 0 0 100%;
+}
+@media (max-width: 991px) {
+  #main #trackers .tracker .tracker-icons {
+    flex: 0 0 auto;
+  }
 }
 :where(#main #trackers .tracker .tracker-icons):has(> :nth-child(8)) {
   display: grid;
@@ -785,6 +828,11 @@ header a img {
   font-style: normal;
   font-size: 1em;
   color: #44598A;
+}
+@media (max-width: 991px) {
+  #main #trackers .tracker .tracker-label {
+    flex: 0 0 auto;
+  }
 }
 #main #trackers .new-tracker {
   display: flex;

@@ -14,6 +14,10 @@
   body {
     @include fonts.m-plus-rounded-1c-medium($font-size: 1.6em);
   
+    @include mixins.breakpoint-max(md) {
+      font-size: 1.2em;
+    }
+
     position: relative;
     background: url(/images/common/bg.jpg);
     background-position: center;
@@ -26,14 +30,22 @@
       @include mixins.d-flex($justify-content: flex-start, $align-items: center);
 
       main {
-        width: clamp(300px, 50vw, 1000px);
+        width: clamp(340px, 50vw, 1000px);
         padding-block-start: 2em;
     
+        @include mixins.breakpoint-max(md) {
+          padding-block-start: 1em;
+        }
+
         h1 {
           text-align: center;
     
           img {
             width: 50%;
+
+            @include mixins.breakpoint-max(md) {
+              width: 100%;
+            }
           }
         }
       }

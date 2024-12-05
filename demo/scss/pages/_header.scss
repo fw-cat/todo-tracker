@@ -30,6 +30,10 @@
     font-size: 34pt;
     height: 100px;
   
+    @include mixins.breakpoint-max(md) {
+      font-size: 2em;
+    }
+
     h1 {
       @include fonts.fredericka-the-great-regular($font-size: 1em, $font-color: variables.$font-color);
       @include mixins.zero-spacing();
@@ -41,6 +45,10 @@
   
       img {
         height: .7em;
+
+        @include mixins.breakpoint-max(md) {
+          height: 1em;
+        }
       }
     }
   }
