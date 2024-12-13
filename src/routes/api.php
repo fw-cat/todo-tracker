@@ -15,7 +15,7 @@ Route::get("/tmp/options", OptionsController::class)->name("options");
 Route::post("/login/", [LoginController::class, "login"])->name("login");
 Route::post("/pre_register/", [RegisterController::class, "pre"])->name("register.pre");
 
-Route::group(['middleware' => ['auth:sanctum,user-api']], function () {
+Route::group(['middleware' => ['auth:sanctum']], function () {
   Route::get("/me", [MeController::class, "index"])->name("me");
   Route::post("/register/{hash}", [RegisterController::class, "authorize"])->name("register.authorize");
   Route::post("/logout/", [LogoutController::class, "logout"])->name("logout");

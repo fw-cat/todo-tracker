@@ -1,47 +1,63 @@
-import axiosInstance from './api'
+import axiosInstance from './api';
 import { navigate } from 'gatsby';
 
-const setToken = (id) => {
-  localStorage.setItem("auth_token", id)
-}
-
 export const handleLogin = async (email, password) => {
+  console.log(email, password)
   try {
-    let login = await axiosInstance.post(`/login`, {
-      email: email,
-      password: password,
+    const response = await axiosInstance.post('/login', {
+      email,
+      password,
     });
-    setToken(login.data.user.id);
-
-    navigate('/');
+    
+    // Assuming the backend sets authentication cookies
+    console.log(response)
+    navigate('/')
+    // return response.data;
 
   } catch (error) {
     console.error('Login failed:', error);
+    throw error; // Re-throw to allow caller to handle error
   }
 };
 
 export const handlePreRegister = async (user_name, email, password, password_confirmation) => {
   try {
-    let login = await axiosInstance.post(`/pre_register`, {
-      user_name: user_name,
-      email: email,
-      password: password,
-      password_confirmation: password_confirmation,
+    const response = await axiosInstance.post('/pre_register', {
+      user_name,
+      email,
+      password,
+      password_confirmation,
     });
-    setToken(login.data.user.id);
-
+    
+    // Assuming the backend sets authentication cookies
     navigate('/');
-
+    return response.data;
   } catch (error) {
-    console.error('Login failed:', error);
+    console.error('Pre-registration failed:', error);
+    throw error; // Re-throw to allow caller to handle error
   }
 };
 
 export const handleLogout = async () => {
   try {
     await axiosInstance.post('/logout');
-    // ログアウト成功処理
+    // Clear any local storage if needed
+    navigate('/user/login');
   } catch (error) {
     console.error('Logout failed:', error);
+    throw error;
+  }
+};
+
+// Optional: Add a function to check authentication status
+export const checkAuthStatus = async () => {
+  try {
+    const response = await axiosInstance.get('/me');
+    // Return true only if the status code is 200
+    return response.status === 200;
+  } catch (error) {
+    // Any error (including non-200 status codes) means not authenticated
+    console.error('Authentication check failed', error);
+    return false;
   }
 };
