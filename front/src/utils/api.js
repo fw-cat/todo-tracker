@@ -24,15 +24,22 @@ axiosInstance.interceptors.request.use(async (config) => {
   const requestMethod = config.method.toUpperCase()
   if (requestMethod === 'POST' || requestMethod === 'PUT' || requestMethod === 'DELETE') {
     try {
-      const response = await axios.get(`${BASE_URL}/sanctum/csrf-cookie`);
-      console.log(response)
+      const response = await axios.get(`${BASE_URL}/sanctum/csrf-cookie`, {
+        withCredentials: true,
+        Referer: BASE_URL,
+        headers: {
+          'Accept': 'application/json',
+          'X-Requested-With': 'XMLHttpRequest'
+        }
+      });
+      console.log(response, document.cookie)
       // Extract the XSRF-TOKEN from cookies
       const xsrfToken = response.headers['x-xsrf-token'] ||
                         response.headers['X-XSRF-TOKEN'] ||
                         document.cookie.split('; ').find(row => row.startsWith('XSRF-TOKEN='))?.split('=')[1]
-  
+
+      console.log(xsrfToken)
       if (xsrfToken) {
-        console.log(xsrfToken)
         // Add the XSRF-TOKEN to the request headers
         config.headers['X-XSRF-TOKEN'] = xsrfToken
       }
