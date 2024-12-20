@@ -11,8 +11,8 @@ const BASE_URL = process.env.GATSBY_APP_API_BASE_URL;
 const axiosInstance = axios.create({
   baseURL: BASE_URL,
   withCredentials: true,
-  Referer: BASE_URL,
   headers: {
+    'Referer': BASE_URL,
     'Accept': 'application/json',
     'X-Requested-With': 'XMLHttpRequest'
   }
@@ -26,8 +26,8 @@ axiosInstance.interceptors.request.use(async (config) => {
     try {
       const response = await axios.get(`${BASE_URL}/sanctum/csrf-cookie`, {
         withCredentials: true,
-        Referer: BASE_URL,
         headers: {
+          'Referer': BASE_URL,
           'Accept': 'application/json',
           'X-Requested-With': 'XMLHttpRequest'
         }
