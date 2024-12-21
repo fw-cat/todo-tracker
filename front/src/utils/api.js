@@ -12,9 +12,11 @@ const axiosInstance = axios.create({
   baseURL: BASE_URL,
   withCredentials: true,
   headers: {
+    'Origin': BASE_URL,
     'Referer': BASE_URL,
+    'Referrer-Policy': 'strict-origin',
     'Accept': 'application/json',
-    'X-Requested-With': 'XMLHttpRequest'
+    'X-Requested-With': 'XMLHttpRequest',
   }
 });
 
@@ -27,7 +29,9 @@ axiosInstance.interceptors.request.use(async (config) => {
       const response = await axios.get(`${BASE_URL}/sanctum/csrf-cookie`, {
         withCredentials: true,
         headers: {
+          'Origin': BASE_URL,
           'Referer': BASE_URL,
+          'Referrer-Policy': 'strict-origin',
           'Accept': 'application/json',
           'X-Requested-With': 'XMLHttpRequest'
         }
