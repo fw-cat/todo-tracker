@@ -7,6 +7,7 @@ axios.defaults.withXSRFToken = true
 
 const BASE_URL = process.env.GATSBY_APP_API_BASE_URL;
 
+console.log(process.env, BASE_URL)
 // Create axios instance with Sanctum CSRF protection
 const axiosInstance = axios.create({
   baseURL: BASE_URL,
