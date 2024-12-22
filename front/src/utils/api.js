@@ -15,7 +15,7 @@ const axiosInstance = axios.create({
   headers: {
     'Origin': BASE_URL,
     'Referer': BASE_URL,
-    'Referrer-Policy': 'strict-origin',
+    'Referrer-Policy': 'strict-origin-when-cross-origin',
     'Accept': 'application/json',
     'X-Requested-With': 'XMLHttpRequest',
   }
@@ -32,7 +32,7 @@ axiosInstance.interceptors.request.use(async (config) => {
         headers: {
           'Origin': BASE_URL,
           'Referer': BASE_URL,
-          'Referrer-Policy': 'strict-origin',
+          'Referrer-Policy': 'strict-origin-when-cross-origin',
           'Accept': 'application/json',
           'X-Requested-With': 'XMLHttpRequest'
         }
