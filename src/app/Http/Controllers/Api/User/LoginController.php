@@ -34,14 +34,5 @@ class LoginController extends Controller
         return new JsonResponse([
             'message' => 'Unauthenticated.',
         ]);
-
-        // $credentials = $service->login($request);
-        // if (!$credentials) {
-        //     throw new AuthenticationException();
-        // }
-        // return new JsonResponse([
-        //     "message" => "Authenticated.",
-        //     'user' => new UserResource($credentials),
-        // ], Response::HTTP_OK);
     }
 }
