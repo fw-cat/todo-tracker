@@ -946,8 +946,21 @@ header a img {
   justify-content: normal;
   gap: 1.5em;
 }
+@media (max-width: 991px) {
+  #create .wrap main form section.form-group .input-group {
+    width: 80%;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5em;
+  }
+}
 #create .wrap main form section.form-group .input-group + .input-group {
   margin-block-start: 3em;
+}
+@media (max-width: 991px) {
+  #create .wrap main form section.form-group .input-group + .input-group {
+    margin-block-start: 1.5em;
+  }
 }
 #create .wrap main form section.form-group .input-group:has(.select-area) {
   display: flex;
@@ -956,6 +969,13 @@ header a img {
   align-items: flex-start;
   align-content: normal;
   justify-content: normal;
+}
+@media (max-width: 991px) {
+  #create .wrap main form section.form-group .input-group:has(.select-area) {
+    width: 80%;
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
 #create .wrap main form section.form-group .input-group:has(.select-area) label {
   padding-block-start: 0.5em;
@@ -968,11 +988,21 @@ header a img {
   color: #21468E;
   flex: 0 0 4.5em;
 }
+@media (max-width: 991px) {
+  #create .wrap main form section.form-group .input-group > label {
+    flex: 0 0 auto;
+  }
+}
 #create .wrap main form section.form-group .input-group > label img {
   height: 1em;
 }
 #create .wrap main form section.form-group .input-group div {
   flex: 1 1 auto;
+}
+@media (max-width: 991px) {
+  #create .wrap main form section.form-group .input-group div {
+    width: 100%;
+  }
 }
 #create .wrap main form section.form-group .input-group div input:not([type=radio], [type=checkbox]) {
   background-color: #E5EBF1;
@@ -1027,8 +1057,14 @@ header a img {
   text-align: center;
 }
 #create .wrap main form section.add-input-group button {
+  display: block;
   margin: 3em auto 0;
   width: 20%;
+}
+@media (max-width: 991px) {
+  #create .wrap main form section.add-input-group button {
+    width: 30%;
+  }
 }
 #create .wrap main form section.submit-group button {
   margin: 5em auto 0;
@@ -1052,6 +1088,12 @@ header a img {
   justify-content: flex-start;
   gap: 3em 2%;
 }
+@media (max-width: 991px) {
+  #edit .wrap main form #trackers {
+    column-gap: 4%;
+    justify-content: space-between;
+  }
+}
 #edit .wrap main form #trackers .tracker {
   position: relative;
   border-radius: 15px;
@@ -1065,6 +1107,13 @@ header a img {
   align-items: center;
   align-content: normal;
   justify-content: space-around;
+}
+@media (max-width: 991px) {
+  #edit .wrap main form #trackers .tracker {
+    flex: 0 0 48%;
+    min-height: auto;
+    gap: 1em;
+  }
 }
 #edit .wrap main form #trackers .tracker .close {
   position: absolute;
@@ -1082,8 +1131,15 @@ header a img {
   gap: 1em 0%;
   width: 80%;
 }
+@media (max-width: 991px) {
+  #edit .wrap main form #trackers .tracker .tracker-colors {
+    width: 100%;
+    justify-content: flex-start;
+    column-gap: 1em;
+  }
+}
 #edit .wrap main form #trackers .tracker .tracker-colors label {
-  flex: 0 0 40%;
+  flex: 1 1 40%;
   display: inline-flex;
   align-items: center;
   justify-content: flex-start;

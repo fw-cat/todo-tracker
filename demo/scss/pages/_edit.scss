@@ -17,6 +17,11 @@
               $justify-content: flex-start);
             gap: 3em 2%;
 
+            @include mixins.breakpoint-max(md) {
+              column-gap: 4%;
+              justify-content: space-between;
+            }
+
             .tracker {
               position: relative;
 
@@ -26,11 +31,16 @@
               flex: 0 0 32%;
               min-height: 280px;
 
+              @include mixins.breakpoint-max(md) {
+                flex: 0 0 48%;
+                min-height: auto;
+                gap: 1em;
+              }
+
               @include mixins.d-flex($flex-direction: column,
                 $flex-wrap: wrap,
                 $align-items: center,
                 $justify-content: space-around);
-              // row-gap: 2em;
 
               .close {
                 position: absolute;
@@ -46,8 +56,14 @@
                 gap: 1em 0%;
                 width: 80%;
 
+                @include mixins.breakpoint-max(md) {
+                  width: 100%;
+                  justify-content: flex-start;
+                  column-gap: 1em;
+                }
+  
                 label {
-                  flex: 0 0 40%;
+                  flex: 1 1 40%;
                   display: inline-flex;
                   align-items: center;
                   justify-content: flex-start;
