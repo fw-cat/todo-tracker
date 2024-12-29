@@ -16,8 +16,8 @@ module.exports = {
         name: `KERO TRAKER`,
         short_name: `KERO TRAKER`,
         start_url: `/`,
-        background_color: `#f7f0eb`,
-        theme_color: `#a2466c`,
+        background_color: `#38599b`,
+        theme_color: `#38599b`,
         display: `standalone`,
         icon: "src/images/icon.png",
         icons: [
