@@ -26,7 +26,7 @@ class UpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'trackers' => ["required", "array"],
+            'trackers' => ["array"],
             'trackers.*.name' => ["required", "string"],
             'trackers.*.color' => ["required", "integer", new Enum(TrackerColor::class)],
             'trackers.*.interval' => ["nullable", "integer", new Enum(TrackerInterval::class)],
