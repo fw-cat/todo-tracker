@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Models\UserSetting;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -18,6 +19,8 @@ class UserResource extends JsonResource
             'user_name' => $this->user_name,
             'email' => $this->email,
             'status' => $this->status->getLabel(),
+
+            'setting' => $this->setting ?? UserSetting::default(),
         ];
     }
 }

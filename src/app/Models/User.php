@@ -65,11 +65,19 @@ class User extends Authenticatable
     }
     /**
      * 仮登録コード
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne<temporaryRegistUser>
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne<TemporaryRegistUser>
      */
     public function temporaryRegistUser()
     {
         return $this->hasOne(TemporaryRegistUser::class, "user_id", "id");
+    }
+    /**
+     * ユーザ設定
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne<UserSetting>
+     */
+    public function setting()
+    {
+        return $this->hasOne(UserSetting::class, "user_id", "id");
     }
 
     /*****************************************
