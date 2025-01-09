@@ -659,6 +659,11 @@ header:has(:nth-child(2):last-child):has(h1 + a)::before {
   content: "";
   width: 60px;
 }
+header:has(:nth-child(2):last-child):has(a + h1)::after {
+  display: block;
+  content: "";
+  width: 60px;
+}
 header:has(:nth-child(3):last-child) {
   display: flex;
   flex-direction: row;
@@ -1247,4 +1252,195 @@ header a img {
 
 footer h6 {
   text-align: center;
+}
+
+#setting .setttings-menu {
+  width: clamp(300px, 55%, 600px);
+  margin-inline: auto;
+  list-style: none;
+  padding-inline: 0;
+  color: #21468E;
+}
+#setting .setttings-menu li a {
+  position: relative;
+  width: 100%;
+  background-color: #E5EBF1;
+  justify-content: center;
+  align-items: center;
+  padding-block: 1em;
+}
+#setting .setttings-menu li a span {
+  position: absolute;
+  left: 1em;
+}
+#setting .setttings-menu li + li {
+  margin-block-start: 2em;
+}
+#setting .setttings-menu li label:has(input[type=checkbox]) {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: unset;
+  align-items: center;
+  align-content: normal;
+  justify-content: flex-start;
+  gap: 1em;
+  position: relative;
+  user-select: none;
+}
+#setting .setttings-menu li label:has(input[type=checkbox])::before {
+  content: "";
+  display: block;
+  width: 1.8em;
+  aspect-ratio: 1;
+  border-radius: 5px;
+  background-color: #E5EBF1;
+  box-shadow: 2px 2px 8px 0px rgba(0, 0, 0, 0.4);
+}
+#setting .setttings-menu li label:has(input[type=checkbox]) input[type=checkbox] {
+  display: none;
+}
+#setting .setttings-menu li label:has(input[type=checkbox]:checked)::after {
+  color: #21468E;
+  font-family: "Material Symbols Outlined";
+  font-weight: normal;
+  font-style: normal;
+  font-size: 2.4em;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: "liga";
+  -webkit-font-smoothing: antialiased;
+  content: "check";
+  display: block;
+  position: absolute;
+  left: -0.15em;
+}
+#setting .setttings-menu li label + ul {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: unset;
+  align-items: center;
+  align-content: normal;
+  justify-content: flex-start;
+  margin-block-start: 1em;
+  gap: 2em;
+  list-style: none;
+}
+#setting .setttings-menu li label + ul li {
+  flex: 1 1 calc((100% - 2em) / 2);
+}
+#setting .setttings-menu li label + ul li label:has(input[type=radio]) {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: unset;
+  align-items: center;
+  align-content: normal;
+  justify-content: flex-start;
+  gap: 0.5em;
+  position: relative;
+  user-select: none;
+}
+#setting .setttings-menu li label + ul li label:has(input[type=radio])::before {
+  content: "";
+  display: block;
+  width: 1.2em;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background-color: #E5EBF1;
+  box-shadow: 2px 2px 8px 0px rgba(0, 0, 0, 0.2);
+}
+#setting .setttings-menu li label + ul li label:has(input[type=radio]):has(input[type=radio]:checked)::after {
+  content: "";
+  display: block;
+  width: 1em;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background-color: #21468E;
+  box-shadow: 2px 2px 8px 0px rgba(0, 0, 0, 0.2);
+  position: absolute;
+  left: 0.1em;
+}
+#setting .setttings-menu li label + ul li label:has(input[type=radio]) input[type=radio] {
+  display: none;
+}
+#setting .setttings-menu li label + ul li + li {
+  margin-block-start: 0;
+}
+
+#change_pw .wrap main form {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: unset;
+  align-items: center;
+  align-content: normal;
+  justify-content: normal;
+  gap: 1em;
+  background-color: rgba(255, 255, 255, 0.3019607843);
+  border-radius: 1rem;
+  font-size: 1rem;
+  margin-block-start: 3em;
+  padding-block: 5em;
+}
+#change_pw .wrap main form .form-group {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: unset;
+  align-items: normal;
+  align-content: normal;
+  justify-content: space-between;
+  width: 70%;
+  margin-inline: auto;
+  padding-block-end: 2em;
+}
+#change_pw .wrap main form .form-group label {
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 1.4em;
+  color: #21468E;
+  width: 8em;
+  padding-block-start: 0.7em;
+}
+#change_pw .wrap main form .form-group:has(+ .no-label) {
+  padding-block-end: 0;
+}
+#change_pw .wrap main form .form-group.no-label::before {
+  display: block;
+  content: "";
+  font-size: 1.4em;
+  width: 8em;
+}
+#change_pw .wrap main form .form-group .form-control {
+  width: calc(100% - 8em);
+}
+#change_pw .wrap main form .form-submit {
+  width: clamp(150px, 30%, 200px);
+}
+#change_pw .wrap main .go_setting {
+  width: fit-content;
+  margin-inline: auto;
+  padding-block: 2em 0.2em;
+  padding-inline: 0.2em;
+  border-bottom: 1px dashed black;
+}
+#change_pw .wrap main .go_setting a {
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 0.8em;
+  color: #21468E;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: unset;
+  align-items: center;
+  align-content: normal;
+  justify-content: normal;
+  gap: 0.1em;
+}
+#change_pw .wrap main .go_setting a span {
+  font-size: 1.4em;
 }

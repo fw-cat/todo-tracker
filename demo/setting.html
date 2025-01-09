@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>
+    Setting
+  </title>
+
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <script src="https://kit.fontawesome.com/7b4f72e2d2.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <header>
+    <a href="/index.html"><img src="/images/icons/cancel@2x.png"></a>
+    <h1>HABIT TRACKER</h1>
+  </header>
+  <section id="setting">
+    <div class="wrap">
+      <main>
+        <h1><img src="/images/setting/titile_ribbon@2x.png"></h1>
+
+        <ul class="setttings-menu">
+          <li>
+            <a href="change_password.html" class="btn">
+              <span class="material-symbols-outlined">lock</span>
+              パスワード変更
+            </a>
+          </li>
+
+          <li>
+            <label>
+              <input type="checkbox" id="is_achievement">
+              達成度表示機能 ON（PCのみ表示）
+            </label>
+          </li>
+
+          <li>
+            <label>
+              <input type="checkbox" id="is_achievement">
+              メッセージ機能
+            </label>
+            <ul>
+              <li>
+                <label>
+                  <input type="radio" name="message_type">ノーマル
+                </label>
+              </li>
+              <li>
+                <label>
+                  <input type="radio" name="message_type">スパルタ
+                </label>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </main>
+    </div>
+  </section>
+  <footer></footer>
+  <script src="./assets/js/demo.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,134 @@
+@use "../components/mixins" as mixins;
+@use "../components/variables" as variables;
+@use "../components/fonts" as fonts;
+
+@mixin styles {
+  #setting {
+    .setttings-menu {
+      width: clamp(300px, 55%, 600px);
+      margin-inline: auto;
+      list-style: none;
+      padding-inline: 0;
+      color: variables.$form-labe-color;
+
+      li {
+        a {
+          position: relative;
+          width: 100%;
+          background-color: variables.$task-bg-color;
+          justify-content: center;
+          align-items: center;
+          padding-block: 1em;
+
+          span {
+            position: absolute;
+            left: 1em;
+          }
+        }
+
+        + li {
+          margin-block-start: 2em;
+        }
+
+        label {
+          &:has(input[type=checkbox]) {
+            @include mixins.d-flex(
+              $flex-direction: row,
+              $align-items: center,
+              $justify-content: flex-start
+            );
+            gap: 1em;
+            position: relative;
+            user-select: none;
+  
+            &::before {
+              content: "";
+              display: block;
+              width: 1.8em;
+              aspect-ratio: 1;
+              border-radius: 5px;
+              background-color: variables.$task-bg-color;;
+              box-shadow: 2px 2px 8px 0px rgba(0, 0, 0, 0.4);
+            }
+  
+            input[type=checkbox] {
+              display: none;
+            }
+          }
+          &:has(input[type=checkbox]:checked) {
+            &::after {
+              @include fonts.material-symbols-outlined(
+                $font-size: 2.4em,
+                $font-color: variables.$form-labe-color
+              );
+              content: "check";
+              display: block;
+              position: absolute;
+              left: -.15em;
+            }
+          }
+
+          + ul {
+            @include mixins.d-flex(
+              $flex-direction: row,
+              $align-items: center,
+              $justify-content: flex-start
+            );
+            margin-block-start: 1em;
+            gap: 2em;
+            list-style: none;
+
+            li {
+              flex: 1 1 calc((100% - 2em) / 2);
+
+              label {
+                &:has(input[type=radio]) {
+                  @include mixins.d-flex(
+                    $flex-direction: row,
+                    $align-items: center,
+                    $justify-content: flex-start
+                  );
+                  gap: .5em;
+                  position: relative;
+                  user-select: none;
+
+                  &::before {
+                    content: "";
+                    display: block;
+                    width: 1.2em;
+                    aspect-ratio: 1;
+                    border-radius: 50%;
+                    background-color: variables.$task-bg-color;
+                    box-shadow: 2px 2px 8px 0px rgba(0, 0, 0, 0.2);
+                  }
+
+                  &:has(input[type=radio]:checked) {
+                    &::after {
+                      content: "";
+                      display: block;
+                      width: 1em;
+                      aspect-ratio: 1;
+                      border-radius: 50%;
+                      background-color: variables.$form-labe-color;
+                      box-shadow: 2px 2px 8px 0px rgba(0, 0, 0, 0.2);
+                      position: absolute;
+                      left: .1em;
+                    }
+                  }
+        
+                  input[type=radio] {
+                    display: none;
+                  }
+                }
+              }
+
+              + li {
+                margin-block-start: 0;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -15,6 +15,8 @@
 @use "./pages/create" as p_create;
 @use "./pages/edit" as p_edit;
 @use "./pages/loading" as p_loading;
+@use "./pages/setttings" as p_setttings;
+@use "./pages/change_pw" as p_change_pw;
 
 @include normalize.normalize();
 @include utilities.utilities();
@@ -41,3 +43,5 @@
 @include p_create.styles();
 @include p_edit.styles();
 @include footer.styles();
+@include p_setttings.styles();
+@include p_change_pw.styles();

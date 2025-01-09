@@ -18,6 +18,14 @@
           width: 60px;
         }
       }
+
+      &:has(a + h1) {
+        &::after {
+          display: block;
+          content: "";
+          width: 60px;
+        }
+      }
     }
     &:has(:nth-child(3):last-child) {
       @include mixins.d-flex($flex-direction: row, $justify-content: space-between, $align-items: center);
