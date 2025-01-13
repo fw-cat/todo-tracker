@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\Tracker\TrackerController;
 use App\Http\Controllers\Api\User\LoginController;
 use App\Http\Controllers\Api\User\LogoutController;
 use App\Http\Controllers\Api\User\RegisterController;
+use App\Http\Controllers\Api\User\Setting\AchievementController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -26,4 +27,6 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
   Route::delete("/tracker/", [TrackerController::class, "destroy"])->name("trackers.delete");
 
   Route::post("/tracker/{id}/check/", [TrackerCheckController::class, "store"])->name("tracker.check.store");
+
+  Route::put("/user/settings/achievement", [AchievementController::class, "toggle"])->name("user.settings.achievement");
 });

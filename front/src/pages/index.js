@@ -50,7 +50,7 @@ const IndexPage = () => {
   // ヘッダー
   const headerContent = (
     <>
-      <Link to="/create">
+      <Link to="/user/settings">
         <img src="/images/icons/setting@2x.png" alt="設定" />
       </Link>
       <h1>HABIT TRACKER</h1>

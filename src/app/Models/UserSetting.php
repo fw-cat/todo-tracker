@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Enums\MessageType;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -26,6 +27,9 @@ class UserSetting extends Model
         $setting = new UserSetting();
         $setting->is_achievement = true;
         $setting->message_type = MessageType::NONE;
+        $setting->created_at = Carbon::now();
+        $setting->updated_at = Carbon::now();
+        $setting->deleted_at = null;
 
         return $setting;
     }
