@@ -15,8 +15,15 @@ class TrackerResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
+        // 当日を取得
+        $today = Carbon::now();
         // 月カウント（月末日）を取得
-        $toMonth = Carbon::now()->endOfMonth();
+        $endMonuth = Carbon::now()->endOfMonth();
+        // 当日までのチェック数
+        $checked = $this->checks()->toMonth()->count();
+
+        // 割合
+        $achievement = floor(($checked / $this->interval->maxCount()) * 100);
 
         return [
             'id' => $this->id,
@@ -28,13 +35,19 @@ class TrackerResource extends JsonResource
                 'name' => $this->color->getName(),
             ],
             'interval' => $this->interval,
+            'interval_label' => $this->interval->getName(),
             '_interval' => [
                 'id' => $this->interval,
                 'name' => $this->interval->getName(),
             ],
-            'count' => $this->checks()->toMonth()->count(),
-            'max_count' => $toMonth,
+            'count' => $checked,
+            'today' => intval($today->format("d")),
+            'max_count' => $this->interval->maxCount(),
+            'achievement' => $achievement,
             'is_checked' => $this->hasCheckOn(),
+            'check_days' => $this->checks()->toMonth()->get('check_dt')->map(function() {
+                return Carbon::parse($this->check_dt)->format("Y-m-d");
+            }),
         ];
     }
 }

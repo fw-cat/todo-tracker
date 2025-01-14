@@ -837,7 +837,7 @@ header a img {
   align-items: flex-start;
   align-content: stretch;
   justify-content: flex-start;
-  gap: 1em 2%;
+  gap: 2em 2%;
 }
 @media (max-width: 991px) {
   #main #trackers {
@@ -846,12 +846,114 @@ header a img {
   }
 }
 #main #trackers .tracker {
+  flex: 0 0 32%;
+}
+@media (max-width: 991px) {
+  #main #trackers .tracker {
+    flex: 0 0 48%;
+  }
+}
+#main #trackers .tracker.color-01 .interval {
+  background-image: url(/images/color-icon/color-01-label.svg);
+}
+#main #trackers .tracker.color-01 .achievement .filled {
+  background-color: #90a2c9;
+}
+#main #trackers .tracker.color-01 .achievement .label {
+  background-image: url(/images/color-icon/color-01-label.svg);
+}
+#main #trackers .tracker.color-02 .interval {
+  background-image: url(/images/color-icon/color-02-label.svg);
+}
+#main #trackers .tracker.color-02 .achievement .filled {
+  background-color: #cf8ba7;
+}
+#main #trackers .tracker.color-02 .achievement .label {
+  background-image: url(/images/color-icon/color-02-label.svg);
+}
+#main #trackers .tracker.color-03 .interval {
+  background-image: url(/images/color-icon/color-03-label.svg);
+}
+#main #trackers .tracker.color-03 .achievement .filled {
+  background-color: #90c992;
+}
+#main #trackers .tracker.color-03 .achievement .label {
+  background-image: url(/images/color-icon/color-03-label.svg);
+}
+#main #trackers .tracker.color-04 .interval {
+  background-image: url(/images/color-icon/color-04-label.svg);
+}
+#main #trackers .tracker.color-04 .achievement .filled {
+  background-color: #90c9c8;
+}
+#main #trackers .tracker.color-04 .achievement .label {
+  background-image: url(/images/color-icon/color-04-label.svg);
+}
+#main #trackers .tracker.color-05 .interval {
+  background-image: url(/images/color-icon/color-05-label.svg);
+}
+#main #trackers .tracker.color-05 .achievement .filled {
+  background-color: #d9c459;
+}
+#main #trackers .tracker.color-05 .achievement .label {
+  background-image: url(/images/color-icon/color-05-label.svg);
+}
+#main #trackers .tracker.color-06 .interval {
+  background-image: url(/images/color-icon/color-06-label.svg);
+}
+#main #trackers .tracker.color-06 .achievement .filled {
+  background-color: #c97575;
+}
+#main #trackers .tracker.color-06 .achievement .label {
+  background-image: url(/images/color-icon/color-06-label.svg);
+}
+#main #trackers .tracker .card {
   border-radius: 15px;
   background-color: #E5EBF1;
   padding-block: 1em;
   padding-inline: 0.5em;
-  flex: 0 0 32%;
   min-height: 280px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  align-content: normal;
+  justify-content: flex-start;
+}
+@media (max-width: 991px) {
+  #main #trackers .tracker .card {
+    min-height: auto;
+    aspect-ratio: 1/1;
+  }
+}
+#main #trackers .tracker .card .interval {
+  position: absolute;
+  right: -0.5em;
+  top: -1em;
+  background-repeat: no-repeat;
+  background-size: contain;
+  text-align: center;
+  padding: 0.5em 1em;
+}
+#main #trackers .tracker .card .card-header {
+  flex: 0 0 1em;
+}
+#main #trackers .tracker .card .card-header .toracker-days {
+  display: inline-flex;
+  color: #21468E;
+}
+#main #trackers .tracker .card .card-header .toracker-days::before {
+  content: "";
+  display: block;
+  background-image: url("/images/icons/calendar@2x.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 1em;
+  aspect-ratio: 1.5;
+}
+#main #trackers .tracker .card .card-body {
+  flex: 1 1 auto;
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
@@ -859,33 +961,26 @@ header a img {
   align-content: normal;
   justify-content: space-between;
 }
-@media (max-width: 991px) {
-  #main #trackers .tracker {
-    flex: 0 0 48%;
-    min-height: auto;
-    aspect-ratio: 1/1;
-  }
-}
-#main #trackers .tracker .tracker-icons {
+#main #trackers .tracker .card .card-body .tracker-icons {
   width: 100%;
   flex: 0 0 100%;
 }
 @media (max-width: 991px) {
-  #main #trackers .tracker .tracker-icons {
+  #main #trackers .tracker .card .card-body .tracker-icons {
     flex: 0 0 auto;
   }
 }
-:where(#main #trackers .tracker .tracker-icons):has(> :nth-child(8)) {
+:where(#main #trackers .tracker .card .card-body .tracker-icons):has(> :nth-child(8)) {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   grid-template-rows: repeat(5, 1fr);
   grid-column-gap: 2%;
   grid-row-gap: 2%;
 }
-:where(#main #trackers .tracker .tracker-icons):has(> :nth-child(8)) img {
+:where(#main #trackers .tracker .card .card-body .tracker-icons):has(> :nth-child(8)) img {
   width: 100%;
 }
-:where(#main #trackers .tracker .tracker-icons):has(> :nth-child(-n+7):last-child) {
+:where(#main #trackers .tracker .card .card-body .tracker-icons):has(> :nth-child(-n+7):last-child) {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -894,11 +989,11 @@ header a img {
   justify-content: flex-start;
   gap: 2%;
 }
-:where(#main #trackers .tracker .tracker-icons):has(> :nth-child(-n+7):last-child) img {
+:where(#main #trackers .tracker .card .card-body .tracker-icons):has(> :nth-child(-n+7):last-child) img {
   width: 12%;
   flex: 1 1 12%;
 }
-#main #trackers .tracker .tracker-label {
+#main #trackers .tracker .card .card-body .tracker-label {
   width: 100%;
   flex: 0 0 100%;
   text-align: center;
@@ -909,11 +1004,48 @@ header a img {
   color: #44598A;
 }
 @media (max-width: 991px) {
-  #main #trackers .tracker .tracker-label {
+  #main #trackers .tracker .card .card-body .tracker-label {
     flex: 0 0 auto;
   }
 }
+#main #trackers .tracker .achievement {
+  margin-block-start: 1em;
+  background-color: #cacdd4;
+  border-radius: 10px;
+  border: 2px solid #808080;
+  height: calc(1em + 4px);
+  position: relative;
+}
+#main #trackers .tracker .achievement .hide {
+  display: none;
+}
+@media (max-width: 991px) {
+  #main #trackers .tracker .achievement {
+    display: none;
+  }
+}
+#main #trackers .tracker .achievement .filled {
+  width: 0%;
+  height: 100%;
+  border-radius: 10px;
+}
+#main #trackers .tracker .achievement .label {
+  position: absolute;
+  background-repeat: no-repeat;
+  background-size: cover;
+  top: -0.3em;
+  aspect-ratio: 6;
+  text-align: center;
+  padding-block: 0.3em;
+  margin-inline-start: -1em;
+}
 #main #trackers .new-tracker {
+  border-radius: 15px;
+  background-color: #E5EBF1;
+  padding-block: 1em;
+  padding-inline: 0.5em;
+  min-height: 280px;
+  position: relative;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -921,6 +1053,12 @@ header a img {
   align-content: normal;
   justify-content: center;
   background-color: rgba(229, 235, 241, 0.6);
+}
+@media (max-width: 991px) {
+  #main #trackers .new-tracker {
+    min-height: auto;
+    aspect-ratio: 1/1;
+  }
 }
 #main #trackers .new-tracker p {
   text-align: center;
@@ -933,6 +1071,23 @@ header a img {
 #main #trackers .blank-tracker {
   background-color: transparent;
   border: 2px dashed rgba(229, 235, 241, 0.6);
+  border-radius: 15px;
+  padding-block: 1em;
+  padding-inline: 0.5em;
+  min-height: 280px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  align-content: normal;
+  justify-content: flex-start;
+}
+@media (max-width: 991px) {
+  #main #trackers .blank-tracker {
+    min-height: auto;
+    aspect-ratio: 1/1;
+  }
 }
 
 #new_user .wrap main form {

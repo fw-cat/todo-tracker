@@ -93,7 +93,7 @@ const CreateForm = ({
               type="radio"
               id={`interval_${index}_weekly`}
               name={`interval_${index}`}
-              value="weekly"
+              value={intervals['others'][0].value}
               onChange={(e) => onChanges('interval', e)}
             />
             週
