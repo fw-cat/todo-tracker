@@ -14,7 +14,7 @@
         $align-items: flex-start,
         $align-content: stretch,
         $justify-content: flex-start);
-      gap: 1em 2%;
+      gap: 2em 2%;
 
       @include mixins.breakpoint-max(md) {
         column-gap: 4%;
@@ -22,76 +22,184 @@
       }
   
       .tracker {
-        border-radius: 15px;
-        background-color: variables.$task-bg-color;
-        padding-block: 1em;
-        padding-inline: .5em;
         flex: 0 0 32%;
-        min-height: 280px;
 
         @include mixins.breakpoint-max(md) {
           flex: 0 0 48%;
-          min-height: auto;
-          aspect-ratio: 1/1;
         }
   
-        @include mixins.d-flex($flex-direction: column,
-        $flex-wrap: nowrap,
-        $align-items: center,
-        $justify-content: space-between);
-  
-        .tracker-icons {
-          width: 100%;
-          flex: 0 0 100%;
-
-          @include mixins.breakpoint-max(md) {
-            flex: 0 0 auto;
-          }
-
-          :where(&):has(> :nth-child(8)) {
-            display: grid;
-            grid-template-columns: repeat(7, 1fr);
-            grid-template-rows: repeat(5, 1fr);
-            grid-column-gap: 2%;
-            grid-row-gap: 2%;
-  
-            img {
-              width: 100%;
+        @each $num, $color in variables.$tracker-colors {
+          &.color-#{$num} {
+            .interval {
+              background-image: url(/images/color-icon/color-#{$num}-label.svg);
+            }
+            .achievement {
+              .filled {
+                background-color: $color;
+              }
+              .label {
+                background-image: url(/images/color-icon/color-#{$num}-label.svg);
+              }
             }
           }
-  
-          :where(&):has(> :nth-child(-n + 7):last-child) {
-            @include mixins.d-flex($flex-direction: row,
-              $flex-wrap: wrap,
-              $align-items: center,
-              $justify-content: flex-start);
-            gap: 2%;
-  
-            img {
-              width: 12%;
-              flex: 1 1 12%;
-            }
-          }
-  
         }
-  
-        .tracker-label {
-          width: 100%;
-          flex: 0 0 100%;
-          text-align: center;
 
-          @include fonts.m-plus-rounded-1c-medium(
-            $font-size: 1em,
-            $font-color: variables.$task-label
+        .card {
+          border-radius: 15px;
+          background-color: variables.$task-bg-color;
+          padding-block: 1em;
+          padding-inline: .5em;
+          min-height: 280px;
+          position: relative;
+
+          @include mixins.d-flex($flex-direction: column,
+            $flex-wrap: nowrap,
+            $align-items: flex-start,
+            $justify-content: flex-start
           );
 
           @include mixins.breakpoint-max(md) {
-            flex: 0 0 auto;
+            min-height: auto;
+            aspect-ratio: 1/1;
+          }
+  
+          .interval {
+            position: absolute;
+            right: -.5em;
+            top: -1em;
+            background-repeat: no-repeat;
+            background-size: contain;
+            text-align: center;
+            padding: .5em 1em;
+          }
+ 
+          .card-header {
+            flex: 0 0 1em;
+
+            .toracker-days {
+              display: inline-flex;
+              color: variables.$form-labe-color;
+
+              &::before {
+                content: "";
+                display: block;
+                background-image: url("/images/icons/calendar@2x.png");
+                background-size: contain;
+                background-repeat: no-repeat;
+                height: 1em;
+                aspect-ratio: 1.5;
+              }
+            }
+          }
+
+          .card-body {
+            flex: 1 1 auto;
+
+            @include mixins.d-flex($flex-direction: column,
+              $flex-wrap: nowrap,
+              $align-items: center,
+              $justify-content: space-between
+            );
+
+            .tracker-icons {
+              width: 100%;
+              flex: 0 0 100%;
+    
+              @include mixins.breakpoint-max(md) {
+                flex: 0 0 auto;
+              }
+    
+              :where(&):has(> :nth-child(8)) {
+                display: grid;
+                grid-template-columns: repeat(7, 1fr);
+                grid-template-rows: repeat(5, 1fr);
+                grid-column-gap: 2%;
+                grid-row-gap: 2%;
+      
+                img {
+                  width: 100%;
+                }
+              }
+      
+              :where(&):has(> :nth-child(-n + 7):last-child) {
+                @include mixins.d-flex($flex-direction: row,
+                  $flex-wrap: wrap,
+                  $align-items: center,
+                  $justify-content: flex-start);
+                gap: 2%;
+      
+                img {
+                  width: 12%;
+                  flex: 1 1 12%;
+                }
+              }
+      
+            }
+
+            .tracker-label {
+              width: 100%;
+              flex: 0 0 100%;
+              text-align: center;
+    
+              @include fonts.m-plus-rounded-1c-medium(
+                $font-size: 1em,
+                $font-color: variables.$task-label
+              );
+    
+              @include mixins.breakpoint-max(md) {
+                flex: 0 0 auto;
+              }
+            }
+          }
+        }
+
+        .achievement {
+          margin-block-start: 1em;
+          background-color: #cacdd4;
+          border-radius: 10px;
+          border: 2px solid #808080;
+          height: calc(1em + 4px);
+          position: relative;
+
+          .hide {
+            display: none;
+          }
+          @include mixins.breakpoint-max(md) {
+            display: none;
+          }
+
+          .filled {
+            width: 0%;
+            height: 100%;
+            border-radius: 10px;
+          }
+
+          .label {
+            position: absolute;
+            background-repeat: no-repeat;
+            background-size: cover;
+            top: -.3em;
+            aspect-ratio: 6;
+            text-align: center;
+            padding-block: .3em;
+            margin-inline-start: -1em;
           }
         }
       }
   
       .new-tracker {
+        border-radius: 15px;
+        background-color: variables.$task-bg-color;
+        padding-block: 1em;
+        padding-inline: .5em;
+        min-height: 280px;
+        position: relative;
+
+        @include mixins.breakpoint-max(md) {
+          min-height: auto;
+          aspect-ratio: 1/1;
+        }
+
         @include mixins.d-flex($flex-direction: row,
           $flex-wrap: nowrap,
           $align-items: center,
@@ -112,6 +220,23 @@
       .blank-tracker {
         background-color: transparent;
         border: 2px dashed variables.$task-border-color;
+
+        border-radius: 15px;
+        padding-block: 1em;
+        padding-inline: .5em;
+        min-height: 280px;
+        position: relative;
+
+        @include mixins.d-flex($flex-direction: column,
+          $flex-wrap: nowrap,
+          $align-items: flex-start,
+          $justify-content: flex-start
+        );
+
+        @include mixins.breakpoint-max(md) {
+          min-height: auto;
+          aspect-ratio: 1/1;
+        }
       }
     }
   }

@@ -12,6 +12,15 @@ $task-border-color: rgba($task-bg-color, 0.6) !default;
 $task-new-label: #2E4A63 !default;
 $task-label: #44598A !default;
 
+$tracker-colors : (
+  '01': #90a2c9,
+  '02': #cf8ba7,
+  '03': #90c992,
+  '04': #90c9c8,
+  '05': #d9c459,
+  '06': #c97575,
+);
+
 $anges: (
   "45" : 45deg,
   "90" : 90deg,
