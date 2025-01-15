@@ -24,6 +24,9 @@ class TrackerResource extends JsonResource
 
         // 割合
         $achievement = floor(($checked / $this->interval->maxCount()) * 100);
+        if ($achievement > 100) {
+            $achievement = 100;
+        }
 
         return [
             'id' => $this->id,
