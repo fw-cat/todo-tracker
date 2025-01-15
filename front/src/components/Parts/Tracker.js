@@ -44,12 +44,10 @@ const Tracker = ({ tracker, checked }) => {
           className="filled"
           style={{
             width: `${tracker.achievement}%`,
-          }}></div>
-        <div
-          className="label"
-          style={{
-            left: `${tracker.achievement}%`,
-          }}>{ tracker.achievement }%</div>
+          }}>
+            <div className="label">{ tracker.achievement }%</div>
+        </div>
+        
       </div>
     </div>
   );
