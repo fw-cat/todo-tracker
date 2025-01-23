@@ -922,6 +922,11 @@ header a img {
   align-content: normal;
   justify-content: flex-start;
 }
+@supports not (bottom: calc(anchor(top) - 1em)) {
+  #main #trackers .tracker .card {
+    position: relative;
+  }
+}
 @media (max-width: 991px) {
   #main #trackers .tracker .card {
     min-height: auto;
@@ -937,6 +942,12 @@ header a img {
   background-size: contain;
   text-align: center;
   padding: 0.5em 1em;
+}
+@supports not (bottom: calc(anchor(top) - 1em)) {
+  #main #trackers .tracker .card .interval {
+    top: -1em;
+    right: -1em;
+  }
 }
 #main #trackers .tracker .card .card-header {
   flex: 0 0 1em;
