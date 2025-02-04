@@ -922,7 +922,7 @@ header a img {
   align-content: normal;
   justify-content: flex-start;
 }
-@supports not (bottom: calc(anchor(top) - 1em)) {
+@supports not (anchor-name: --tracker) {
   #main #trackers .tracker .card {
     position: relative;
   }
@@ -943,7 +943,7 @@ header a img {
   text-align: center;
   padding: 0.5em 1em;
 }
-@supports not (bottom: calc(anchor(top) - 1em)) {
+@supports not (position-anchor: --tracker) {
   #main #trackers .tracker .card .interval {
     top: -1em;
     right: -1em;
