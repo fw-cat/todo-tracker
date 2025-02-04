@@ -53,7 +53,7 @@
           anchor-name: --tracker;
           anchor-scope: --tracker;
 
-          @supports not (bottom: calc(anchor(top) - 1em)) {
+          @supports not (anchor-name: --tracker) {
             position: relative;
           }
   
@@ -78,7 +78,7 @@
             text-align: center;
             padding: .5em 1em;
 
-            @supports not (bottom: calc(anchor(top) - 1em)) {
+            @supports not (position-anchor: --tracker) {
               top: -1em;
               right: -1em;
             }
